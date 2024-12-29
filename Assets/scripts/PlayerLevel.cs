@@ -1,3 +1,4 @@
+using Collectives.Utilities;
 using UnityEngine;
 
 public class PlayerLevel : MonoBehaviour
@@ -7,15 +8,23 @@ public class PlayerLevel : MonoBehaviour
 
     [SerializeField] private AnimationCurve m_experienceRequirementCurve;
 
+    private void Start()
+    {
+        AddExperience(1500);
+    }
+
     private int GetRequirementOfLevel(int _level)
     {
         float experienceRequirement = m_experienceRequirementCurve.Evaluate(_level);
         return (int)experienceRequirement * _level;
     }
 
-    private void SetLevel(int _newLevel)
+    private void SaveLevelAndExperienceData()
     {
-        m_currentLevel = _newLevel;
+        PlayerData playerData = SaveUtility.GetSavedPlayerData();
+        playerData.level = m_currentLevel;
+        playerData.experience = m_currentExperience;
+        SaveUtility.SavePlayerData(playerData);
     }
 
     public int GetMaxLevel()
@@ -46,12 +55,14 @@ public class PlayerLevel : MonoBehaviour
         {
             if (GetRequirementOfLevel(i) <= m_currentExperience)
             {
-                SetLevel(i);
+                m_currentLevel = i;
                 continue;
             }
 
-            return;
+            break;
         }
+
+        SaveLevelAndExperienceData();
     }
 
 #if UNITY_EDITOR
