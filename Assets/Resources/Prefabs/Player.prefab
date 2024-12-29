@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_groundCheckTF: {fileID: 8080864018565794910}
-  m_groundCheckRadius: 0.2
+  m_groundCheckRadius: 0.1
   m_groundLayer:
     serializedVersion: 2
     m_Bits: 55
@@ -273,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7112b88c8ad4625bffa72bac342e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_controller: {fileID: 6504985449567196583}
   m_moveSpeed: 5
 --- !u!114 &3687843617767617776
 MonoBehaviour:
@@ -288,8 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_camera: {fileID: 5410549222728190299}
   m_player: {fileID: 8080864018565794910}
-  m_mouseSensitivity: 50
-  m_hideLockCamera: 1
+  m_mouseSensitivity: 85
 --- !u!114 &3363515935735375805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,8 +302,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce66c24f43bc4c468d66223dd7c0b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_groundCheck: {fileID: 8131910719467453364}
+  m_controller: {fileID: 6504985449567196583}
   m_jumpHeight: 1
-  m_gravity: 5.95
+  m_gravity: 10
 --- !u!1 &2780278906917928161
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +367,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 24b9b9363f31047ed8783e6f39d05f1c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -3,18 +3,13 @@
 [RequireComponent(typeof(CharacterController), typeof(PlayerGroundCheck))]
 public class PlayerJump : MonoBehaviour
 {
-    [SerializeField] private float m_jumpHeight = 5f;
-    [SerializeField] private float m_gravity = 10f;
+    [SerializeField] private PlayerGroundCheck m_groundCheck;
+    [SerializeField] private CharacterController m_controller;
+    [Space]
+    [SerializeField] private float m_jumpHeight;
+    [SerializeField] private float m_gravity;
 
-    private PlayerGroundCheck m_groundCheck;
-    private CharacterController m_controller;
     private Vector3 m_velocity;
-
-    private void Start()
-    {
-        m_groundCheck = GetComponent<PlayerGroundCheck>();
-        m_controller = GetComponent<CharacterController>();
-    }
 
     private void Update()
     {

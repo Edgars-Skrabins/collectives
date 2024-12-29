@@ -9,21 +9,19 @@ public class PlayerLook : MonoBehaviour
     [Space]
     [SerializeField] private float m_mouseSensitivity = 50f;
 
-    public bool m_hideLockCamera = true;
-
     private float m_xRotation;
 
     private void Start()
     {
-        CursorCheck();
+        DebugUtility.CursorLock(true);
     }
 
     private void FixedUpdate()
     {
-        MouseControl();
+        HandleLookMechanics();
     }
 
-    private void MouseControl()
+    private void HandleLookMechanics()
     {
         float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * m_mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * m_mouseSensitivity;
@@ -33,19 +31,5 @@ public class PlayerLook : MonoBehaviour
 
         m_camera.localRotation = Quaternion.Euler(m_xRotation, 0f, 0f);
         m_player.Rotate(Vector3.up * mouseX);
-    }
-
-    private void CursorCheck()
-    {
-        if (m_hideLockCamera && Cursor.visible)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
     }
 }
