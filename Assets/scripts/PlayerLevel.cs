@@ -53,7 +53,8 @@ public class PlayerLevel : MonoBehaviour
 
         for (int i = m_currentLevel + 1; i < GetMaxLevel(); i++)
         {
-            if (GetRequirementOfLevel(i) <= m_currentExperience)
+            bool shouldLevelUp = GetRequirementOfLevel(i) <= m_currentExperience;
+            if (shouldLevelUp)
             {
                 m_currentLevel = i;
                 continue;
