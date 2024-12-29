@@ -31,14 +31,11 @@ public class PlayerJump : MonoBehaviour
         }
 
         ApplyGravity();
-
-        // Move the controller with the calculated velocity
         m_controller.Move(m_velocity * Time.deltaTime);
     }
 
     private void DoJump()
     {
-        // Calculate the initial jump velocity for the desired jump height
         m_velocity.y = Mathf.Sqrt(2f * m_jumpHeight * m_gravity);
     }
 
@@ -46,14 +43,12 @@ public class PlayerJump : MonoBehaviour
     {
         if (m_groundCheck.IsGrounded() && m_velocity.y < 0)
         {
-            // Slight negative value to keep the player grounded
             m_velocity.y = -2f;
         }
     }
 
     private void ApplyGravity()
     {
-        // Apply gravity to the vertical velocity
         m_velocity.y -= m_gravity * Time.deltaTime;
     }
 }
