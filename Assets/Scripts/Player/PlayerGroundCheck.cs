@@ -15,7 +15,9 @@ public class PlayerGroundCheck : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             if (hits[i] != null)
+            {
                 return true;
+            }
         }
 
         return false;
