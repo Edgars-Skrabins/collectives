@@ -11,6 +11,11 @@ public class PlayerLook : MonoBehaviour
 
     private float m_xRotation;
 
+    private void Start()
+    {
+        CursorUtility.DisableCursor();
+    }
+
     private void FixedUpdate()
     {
         HandleLookMechanics();
