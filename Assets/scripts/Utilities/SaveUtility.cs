@@ -23,16 +23,20 @@ namespace Collectives.Utilities
     {
         public static void SavePlayerData(PlayerData _playerData)
         {
-            string json = JsonUtility.ToJson(_playerData);
-            json = Base64Utility.GetBase64EncodedString(json);
-            PlayerPrefs.SetString(EPlayerPrefs.PLAYER_DATA.ToString(), json);
+            string dataJson = JsonUtility.ToJson(_playerData);
+            dataJson = Base64Utility.GetBase64EncodedString(dataJson);
+            PlayerPrefs.SetString(EPlayerPrefs.PLAYER_DATA.ToString(), dataJson);
         }
 
         public static PlayerData GetSavedPlayerData()
         {
-            string json = PlayerPrefs.GetString(EPlayerPrefs.PLAYER_DATA.ToString());
-            json = Base64Utility.GetBase64DecodedString(json);
-            return JsonUtility.FromJson<PlayerData>(json);
+            if (!PlayerPrefs.HasKey(EPlayerPrefs.PLAYER_DATA.ToString()))
+            {
+                return new PlayerData(0, 0);
+            }
+            string dataJson = PlayerPrefs.GetString(EPlayerPrefs.PLAYER_DATA.ToString());
+            dataJson = Base64Utility.GetBase64DecodedString(dataJson);
+            return JsonUtility.FromJson<PlayerData>(dataJson);
         }
     }
 }
