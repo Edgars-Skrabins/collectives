@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private CharacterController m_controller;
-    [SerializeField] private float m_moveSpeed = 5f;
+    [SerializeField] private float m_moveSpeed;
 
     private void FixedUpdate()
     {

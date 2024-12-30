@@ -21,12 +21,11 @@ public class PlayerGroundCheck : MonoBehaviour
         return false;
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        DebugUtility.DrawGizmo(() =>
-        {
-            Gizmos.color = IsGrounded() ? Color.blue : Color.green;
-            Gizmos.DrawWireSphere(m_groundCheckTF.position, m_groundCheckRadius);
-        });
+        int layer = gameObject.layer;
+        GizmoUtility.DrawWireSphere(m_groundCheckTF.position, m_groundCheckRadius, layer, IsGrounded() ? Color.blue : Color.green);
     }
+#endif
 }

@@ -7,14 +7,9 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private Transform m_camera;
     [SerializeField] private Transform m_player;
     [Space]
-    [SerializeField] private float m_mouseSensitivity = 50f;
+    [SerializeField] private float m_mouseSensitivity;
 
     private float m_xRotation;
-
-    private void Start()
-    {
-        DebugUtility.CursorLock(true);
-    }
 
     private void FixedUpdate()
     {
