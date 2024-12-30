@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 785025905756199808}
   - component: {fileID: 3687843617767617776}
   - component: {fileID: 3363515935735375805}
+  - component: {fileID: 8634116946094937416}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -306,6 +307,42 @@ MonoBehaviour:
   m_controller: {fileID: 6504985449567196583}
   m_jumpHeight: 1
   m_gravity: 10
+--- !u!114 &8634116946094937416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905276090272246699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2a11d2335cc45bfaa9064e2b69db80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_experienceRequirementCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 500
+      outSlope: 500
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 100
+      value: 50000
+      inSlope: 500
+      outSlope: 500
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2780278906917928161
 GameObject:
   m_ObjectHideFlags: 0
