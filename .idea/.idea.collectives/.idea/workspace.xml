@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8056b27-9143-4b0f-9675-c159e3011971" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Heist/Heist.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Heist/Heist.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Valuable/Valuable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Valuable/Valuable.cs" afterDir="false" />
-    </list>
+    <list default="true" id="d8056b27-9143-4b0f-9675-c159e3011971" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
