@@ -6,6 +6,16 @@ namespace Collectives
     {
         private int m_id;
 
+        private void Awake()
+        {
+            InitializeID();
+        }
+
+        private void InitializeID()
+        {
+            // Get ID from spawner object
+        }
+
         public int GetID()
         {
             return m_id;
