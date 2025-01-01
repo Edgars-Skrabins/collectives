@@ -6,10 +6,13 @@ using UnityEngine.Events;
 
 namespace Collectives
 {
-    public class Interactable : MonoBehaviour, IInteractable
+    public abstract class Interactable : MonoBehaviour
     {
-        public UnityEvent OnInteractSuccess {get;} = new UnityEvent();
-        public UnityEvent OnInteractFailure {get;} = new UnityEvent();
+        [Space(5)]
+        [Header("Interaction settings")]
+        [Space(5)]
+        public UnityEvent OnInteractSuccess;
+        public UnityEvent OnInteractFailure;
 
         [SerializeField] private GameObject m_interactPossibleHighlight;
         [SerializeField] private GameObject m_interactImpossibleHighlight;
@@ -29,11 +32,6 @@ namespace Collectives
             OnInteractFailure?.Invoke();
         }
 
-        protected virtual void Interact()
-        {
-            OnInteractSuccess?.Invoke();
-        }
-
         public virtual void HandleInteractInRange(Player _interactor)
         {
             // Check if player is actually allowed to interact.
@@ -41,32 +39,36 @@ namespace Collectives
             // If cannot interact m_playersThatCanInteract.Remove(_interactor) enable impossible interact highlights;
         }
 
-        public void HandleInteractNoLongerInRange(Player _interactor)
+        public virtual void HandleInteractNoLongerInRange(Player _interactor)
         {
             m_playersThatCanInteract.Remove(_interactor);
             DisablePossibleInteractHighlight();
             DisableImpossibleInteractHighlight();
         }
 
+        protected virtual void Interact()
+        {
+            OnInteractSuccess?.Invoke();
+        }
 
-        private void EnablePossibleInteractHighlight()
+        protected virtual void EnablePossibleInteractHighlight()
         {
             DisableImpossibleInteractHighlight();
             m_interactPossibleHighlight.SetActive(true);
         }
 
-        private void DisablePossibleInteractHighlight()
+        protected virtual void DisablePossibleInteractHighlight()
         {
             m_interactPossibleHighlight.SetActive(false);
         }
 
-        private void EnableImpossibleInteractHighlight()
+        protected virtual void EnableImpossibleInteractHighlight()
         {
             DisablePossibleInteractHighlight();
             m_interactImpossibleHighlight.SetActive(true);
         }
 
-        private void DisableImpossibleInteractHighlight()
+        protected virtual void DisableImpossibleInteractHighlight()
         {
             m_interactImpossibleHighlight.SetActive(false);
         }
