@@ -10,12 +10,14 @@ namespace Collectives.HeistSystems
 {
     public struct DynamicHeistData
     {
+        public bool heistRequirementsMet;
         public int acquiredMoney;
         public int acquiredExperience;
         public readonly List<ValuableData> collectedValuables;
 
         public DynamicHeistData(List<ValuableData> _collectedValuables)
         {
+            heistRequirementsMet = false;
             acquiredMoney = 0;
             acquiredExperience = 0;
             collectedValuables = new List<ValuableData>();
@@ -45,7 +47,6 @@ namespace Collectives.HeistSystems
         private StaticHeistData m_staticHeistData;
         private DynamicHeistData m_dynamicHeistData = new DynamicHeistData(
             new List<ValuableData>());
-        private bool m_heistRequirementsMet;
 
         protected override void Awake()
         {
@@ -78,18 +79,21 @@ namespace Collectives.HeistSystems
             return m_staticHeistData;
         }
 
+        public DynamicHeistData GetDynamicHeistData()
+        {
+            return m_dynamicHeistData;
+        }
+
         public void AddValuableToDropOff(ValuableData _valuable)
         {
             m_dynamicHeistData.collectedValuables.Add(_valuable);
-            if (!m_heistRequirementsMet)
+            m_dynamicHeistData.acquiredMoney += _valuable.monetaryValue;
+            m_dynamicHeistData.acquiredExperience += _valuable.experienceValue;
+
+            if (!m_dynamicHeistData.heistRequirementsMet)
             {
                 CheckHeistRequirements();
             }
-        }
-
-        public bool GetHeistRequirementsMet()
-        {
-            return m_heistRequirementsMet;
         }
 
         public void LoadEndGameScene()
@@ -110,7 +114,7 @@ namespace Collectives.HeistSystems
 
             if (hasCollectedRequiredAmount && hasCollectedMustHaveValuables)
             {
-                m_heistRequirementsMet = true;
+                m_dynamicHeistData.heistRequirementsMet = true;
             }
         }
 

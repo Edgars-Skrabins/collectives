@@ -20,20 +20,5 @@ namespace Collectives.Valuable
         [SerializeField] private EWeightClasses m_weightClass;
         [SerializeField] private int m_monetaryValue;
         [SerializeField] private int m_experienceValue;
-
-        public int GetWeightSpeedReduction()
-        {
-            return (int)m_weightClass;
-        }
-
-        public int GetMonetaryValue()
-        {
-            return m_monetaryValue;
-        }
-
-        public int GetExperienceValue()
-        {
-            return m_experienceValue;
-        }
     }
 }
