@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Collectives.Player
+namespace Collectives.PlayerSystems
 {
     [RequireComponent(typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour

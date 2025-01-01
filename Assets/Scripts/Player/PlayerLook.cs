@@ -1,7 +1,7 @@
 using Collectives.Utilities;
 using UnityEngine;
 
-namespace Collectives.Player
+namespace Collectives.PlayerSystems
 
 {
     public class PlayerLook : MonoBehaviour
