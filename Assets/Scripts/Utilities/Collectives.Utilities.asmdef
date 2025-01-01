@@ -1,6 +1,6 @@
 {
-    "name": "Utilities",
-    "rootNamespace": "",
+    "name": "Collectives.Utilities",
+    "rootNamespace": "Collectives.Utilities",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
