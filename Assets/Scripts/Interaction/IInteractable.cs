@@ -1,12 +1,12 @@
-using System;
 using Collectives.PlayerSystems;
+using UnityEngine.Events;
 
 namespace Collectives
 {
     public interface IInteractable
     {
-        public event Action OnInteractSuccess;
-        public event Action OnInteractFailure;
+        public UnityEvent OnInteractSuccess {get;}
+        public UnityEvent OnInteractFailure {get;}
 
         public void AttemptInteract(Player _interactor);
 

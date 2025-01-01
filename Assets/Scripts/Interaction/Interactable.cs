@@ -1,15 +1,15 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Collectives.PlayerSystems;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Collectives
 {
     public class Interactable : MonoBehaviour, IInteractable
     {
-        public event Action OnInteractSuccess;
-        public event Action OnInteractFailure;
+        public UnityEvent OnInteractSuccess {get;} = new UnityEvent();
+        public UnityEvent OnInteractFailure {get;} = new UnityEvent();
 
         [SerializeField] private GameObject m_interactPossibleHighlight;
         [SerializeField] private GameObject m_interactImpossibleHighlight;
