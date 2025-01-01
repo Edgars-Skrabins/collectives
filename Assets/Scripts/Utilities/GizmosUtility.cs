@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Collectives.Utilities
 {
-    public static class GizmoUtility
+    public static class GizmosUtility
     {
         private static bool[] m_layerGizmoToggles;
         private const string m_EDITOR_PREF_KEY = "GizmoUtility_LayerToggle_";
 
-        static GizmoUtility()
+        static GizmosUtility()
         {
             m_layerGizmoToggles = new bool[32];
             LoadToggles();

@@ -29,7 +29,7 @@ namespace Collectives.Player
         private void OnDrawGizmos()
         {
             int layer = gameObject.layer;
-            GizmoUtility.DrawWireSphere(m_groundCheckTF.position, m_groundCheckRadius, layer, IsGrounded() ? Color.blue : Color.green);
+            GizmosUtility.DrawWireSphere(m_groundCheckTF.position, m_groundCheckRadius, layer, IsGrounded() ? Color.blue : Color.green);
         }
 #endif
     }

@@ -1,38 +1,42 @@
-﻿using UnityEditor;
+﻿using Collectives.Utilities;
+using UnityEditor;
 using UnityEngine;
 
-public class GizmoEditor : EditorWindow
+namespace Collectives.Editor
 {
-    private Vector2 m_scrollPosition;
-
-    [MenuItem("Tools/Gizmo Layer Toggles")]
-    public static void ShowWindow()
+    public class GizmoEditor : EditorWindow
     {
-        GetWindow<GizmoEditor>("Gizmo Layer Toggles");
-    }
+        private Vector2 m_scrollPosition;
 
-    private void OnGUI()
-    {
-        EditorGUILayout.LabelField("Gizmo Layer Toggles", EditorStyles.boldLabel);
-        EditorGUILayout.Space();
-
-        m_scrollPosition = EditorGUILayout.BeginScrollView(m_scrollPosition);
-
-        var layers = GizmoUtility.GetLayerToggles();
-        for (int i = 0; i < layers.Length; i++)
+        [MenuItem("Tools/Gizmo Layer Toggles")]
+        public static void ShowWindow()
         {
-            string layerName = LayerMask.LayerToName(i);
-            if (!string.IsNullOrEmpty(layerName))
-            {
-                bool currentState = GizmoUtility.IsLayerGizmoEnabled(i);
-                bool newState = EditorGUILayout.Toggle($"Layer {i}: {layerName}", currentState);
-                if (newState != currentState)
-                {
-                    GizmoUtility.SetLayerGizmo(i, newState);
-                }
-            }
+            GetWindow<GizmoEditor>("Gizmo Layer Toggles");
         }
 
-        EditorGUILayout.EndScrollView();
+        private void OnGUI()
+        {
+            EditorGUILayout.LabelField("Gizmo Layer Toggles", EditorStyles.boldLabel);
+            EditorGUILayout.Space();
+
+            m_scrollPosition = EditorGUILayout.BeginScrollView(m_scrollPosition);
+
+            var layers = GizmosUtility.GetLayerToggles();
+            for (int i = 0; i < layers.Length; i++)
+            {
+                string layerName = LayerMask.LayerToName(i);
+                if (!string.IsNullOrEmpty(layerName))
+                {
+                    bool currentState = GizmosUtility.IsLayerGizmoEnabled(i);
+                    bool newState = EditorGUILayout.Toggle($"Layer {i}: {layerName}", currentState);
+                    if (newState != currentState)
+                    {
+                        GizmosUtility.SetLayerGizmo(i, newState);
+                    }
+                }
+            }
+
+            EditorGUILayout.EndScrollView();
+        }
     }
 }
