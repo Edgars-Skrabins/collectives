@@ -6,12 +6,6 @@ namespace Collectives.Utilities
     {
         public int level;
         public int experience;
-
-        public PlayerData(int _level, int _experience)
-        {
-            level = _level;
-            experience = _experience;
-        }
     }
 
     public static class SaveUtility
@@ -32,7 +26,12 @@ namespace Collectives.Utilities
         {
             if (!PlayerPrefs.HasKey(PlayerPrefsKeys.PLAYER_DATA))
             {
-                return new PlayerData(0, 0);
+                // return new PlayerData(0, 0);
+                return new PlayerData
+                {
+                    level = 0,
+                    experience = 0,
+                };
             }
             string dataJson = PlayerPrefs.GetString(PlayerPrefsKeys.PLAYER_DATA);
             dataJson = Base64Utility.GetBase64DecodedString(dataJson);
