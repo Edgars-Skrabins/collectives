@@ -1,49 +1,53 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(CharacterController), typeof(PlayerGroundCheck))]
-public class PlayerJump : MonoBehaviour
+namespace Collectives.Player
+
 {
-    [SerializeField] private PlayerGroundCheck m_groundCheck;
-    [SerializeField] private CharacterController m_controller;
-    [Space]
-    [SerializeField] private float m_jumpHeight;
-    [SerializeField] private float m_gravity;
-
-    private Vector3 m_velocity;
-
-    private void Update()
+    [RequireComponent(typeof(CharacterController), typeof(PlayerGroundCheck))]
+    public class PlayerJump : MonoBehaviour
     {
-        Jump(Input.GetButtonDown("Jump"));
-    }
+        private PlayerGroundCheck m_groundCheck;
+        [SerializeField] private CharacterController m_controller;
+        [Space]
+        [SerializeField] private float m_jumpHeight;
+        [SerializeField] private float m_gravity;
 
-    private void Jump(bool _jumpInput)
-    {
-        ApplyGroundedForce();
+        private Vector3 m_velocity;
 
-        if (_jumpInput && m_groundCheck.IsGrounded())
+        private void Update()
         {
-            DoJump();
+            Jump(Input.GetButtonDown("Jump"));
         }
 
-        ApplyGravity();
-        m_controller.Move(m_velocity * Time.deltaTime);
-    }
-
-    private void DoJump()
-    {
-        m_velocity.y = Mathf.Sqrt(2f * m_jumpHeight * m_gravity);
-    }
-
-    private void ApplyGroundedForce()
-    {
-        if (m_groundCheck.IsGrounded() && m_velocity.y < 0)
+        private void Jump(bool _jumpInput)
         {
-            m_velocity.y = -2f;
-        }
-    }
+            ApplyGroundedForce();
 
-    private void ApplyGravity()
-    {
-        m_velocity.y -= m_gravity * Time.deltaTime;
+            if (_jumpInput && m_groundCheck.IsGrounded())
+            {
+                DoJump();
+            }
+
+            ApplyGravity();
+            m_controller.Move(m_velocity * Time.deltaTime);
+        }
+
+        private void DoJump()
+        {
+            m_velocity.y = Mathf.Sqrt(2f * m_jumpHeight * m_gravity);
+        }
+
+        private void ApplyGroundedForce()
+        {
+            if (m_groundCheck.IsGrounded() && m_velocity.y < 0)
+            {
+                m_velocity.y = -2f;
+            }
+        }
+
+        private void ApplyGravity()
+        {
+            m_velocity.y -= m_gravity * Time.deltaTime;
+        }
     }
 }

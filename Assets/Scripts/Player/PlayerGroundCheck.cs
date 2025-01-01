@@ -1,33 +1,36 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Collectives.Utilities;
+using UnityEngine;
 
-public class PlayerGroundCheck : MonoBehaviour
+namespace Collectives.Player
 {
-    [SerializeField] private Transform m_groundCheckTF;
-    [SerializeField] private float m_groundCheckRadius;
-    [SerializeField] private LayerMask m_groundLayer;
-
-    public bool IsGrounded()
+    public class PlayerGroundCheck : MonoBehaviour
     {
-        Collider[] hits = new Collider[5];
-        Physics.OverlapSphereNonAlloc(m_groundCheckTF.position, m_groundCheckRadius, hits, m_groundLayer);
+        [SerializeField] private Transform m_groundCheckTF;
+        [SerializeField] private float m_groundCheckRadius;
+        [SerializeField] private LayerMask m_groundLayer;
 
-        for (int i = 0; i < hits.Length; i++)
+        public bool IsGrounded()
         {
-            if (hits[i] != null)
+            Collider[] hits = new Collider[5];
+            Physics.OverlapSphereNonAlloc(m_groundCheckTF.position, m_groundCheckRadius, hits, m_groundLayer);
+
+            for (int i = 0; i < hits.Length; i++)
             {
-                return true;
+                if (hits[i] != null)
+                {
+                    return true;
+                }
             }
+
+            return false;
         }
 
-        return false;
-    }
-
 #if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        int layer = gameObject.layer;
-        GizmoUtility.DrawWireSphere(m_groundCheckTF.position, m_groundCheckRadius, layer, IsGrounded() ? Color.blue : Color.green);
-    }
+        private void OnDrawGizmos()
+        {
+            int layer = gameObject.layer;
+            GizmoUtility.DrawWireSphere(m_groundCheckTF.position, m_groundCheckRadius, layer, IsGrounded() ? Color.blue : Color.green);
+        }
 #endif
+    }
 }

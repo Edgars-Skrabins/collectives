@@ -1,58 +1,61 @@
 using UnityEditor;
 using UnityEngine;
 
-public static class GizmoUtility
+namespace Collectives.Utilities
 {
-    private static bool[] m_layerGizmoToggles;
-    private const string m_EDITOR_PREF_KEY = "GizmoUtility_LayerToggle_";
-
-    static GizmoUtility()
+    public static class GizmoUtility
     {
-        m_layerGizmoToggles = new bool[32];
-        LoadToggles();
-    }
+        private static bool[] m_layerGizmoToggles;
+        private const string m_EDITOR_PREF_KEY = "GizmoUtility_LayerToggle_";
 
-    private static void LoadToggles()
-    {
-        for (int i = 0; i < m_layerGizmoToggles.Length; i++)
+        static GizmoUtility()
         {
-            m_layerGizmoToggles[i] = EditorPrefs.GetBool(m_EDITOR_PREF_KEY + i, true); // Default to true
+            m_layerGizmoToggles = new bool[32];
+            LoadToggles();
         }
-    }
 
-    private static void SaveToggles()
-    {
-        for (int i = 0; i < m_layerGizmoToggles.Length; i++)
+        private static void LoadToggles()
         {
-            EditorPrefs.SetBool(m_EDITOR_PREF_KEY + i, m_layerGizmoToggles[i]);
+            for (int i = 0; i < m_layerGizmoToggles.Length; i++)
+            {
+                m_layerGizmoToggles[i] = EditorPrefs.GetBool(m_EDITOR_PREF_KEY + i, true); // Default to true
+            }
         }
-    }
 
-    public static bool IsLayerGizmoEnabled(int layer)
-    {
-        return layer >= 0 && layer < m_layerGizmoToggles.Length && m_layerGizmoToggles[layer];
-    }
-
-    public static void SetLayerGizmo(int layer, bool enabled)
-    {
-        if (layer >= 0 && layer < m_layerGizmoToggles.Length)
+        private static void SaveToggles()
         {
-            m_layerGizmoToggles[layer] = enabled;
-            SaveToggles();
+            for (int i = 0; i < m_layerGizmoToggles.Length; i++)
+            {
+                EditorPrefs.SetBool(m_EDITOR_PREF_KEY + i, m_layerGizmoToggles[i]);
+            }
         }
-    }
 
-    public static void DrawWireSphere(Vector3 center, float radius, int layer, Color? color = null)
-    {
-        if (IsLayerGizmoEnabled(layer))
+        public static bool IsLayerGizmoEnabled(int layer)
         {
-            Gizmos.color = color ?? Color.white;
-            Gizmos.DrawWireSphere(center, radius);
+            return layer >= 0 && layer < m_layerGizmoToggles.Length && m_layerGizmoToggles[layer];
         }
-    }
 
-    public static bool[] GetLayerToggles()
-    {
-        return m_layerGizmoToggles;
+        public static void SetLayerGizmo(int layer, bool enabled)
+        {
+            if (layer >= 0 && layer < m_layerGizmoToggles.Length)
+            {
+                m_layerGizmoToggles[layer] = enabled;
+                SaveToggles();
+            }
+        }
+
+        public static void DrawWireSphere(Vector3 center, float radius, int layer, Color? color = null)
+        {
+            if (IsLayerGizmoEnabled(layer))
+            {
+                Gizmos.color = color ?? Color.white;
+                Gizmos.DrawWireSphere(center, radius);
+            }
+        }
+
+        public static bool[] GetLayerToggles()
+        {
+            return m_layerGizmoToggles;
+        }
     }
 }
