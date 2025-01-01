@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8056b27-9143-4b0f-9675-c159e3011971" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Valuable/WeightClass.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Valuable/WeightClass.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.collectives/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.collectives/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interaction/IInteractable.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interaction/IInteractable.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interaction/Interactable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interaction/Interactable.cs" afterDir="false" />
-    </list>
+    <list default="true" id="d8056b27-9143-4b0f-9675-c159e3011971" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,7 +103,7 @@
       <workItem from="1735739436494" duration="2401000" />
       <workItem from="1735742232562" duration="21000" />
       <workItem from="1735742277675" duration="6000" />
-      <workItem from="1735742423846" duration="4780000" />
+      <workItem from="1735742423846" duration="4915000" />
     </task>
     <servers />
   </component>

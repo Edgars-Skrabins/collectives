@@ -35,8 +35,9 @@ namespace Collectives
         public virtual void HandleInteractInRange(Player _interactor)
         {
             // Check if player is actually allowed to interact.
-            // If can interact m_playersThatCanInteract.Add(_interactor) enable possible interact highlights;
-            // If cannot interact m_playersThatCanInteract.Remove(_interactor) enable impossible interact highlights;
+            // If the player can interact m_playersThatCanInteract.Add(_interactor) enable possible interact highlights;
+            // If the player cannot interact m_playersThatCanInteract.Remove(_interactor) enable impossible interact highlights;
+            m_playersThatCanInteract.Add(_interactor);
         }
 
         public virtual void HandleInteractNoLongerInRange(Player _interactor)
