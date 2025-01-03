@@ -1,6 +1,6 @@
 {
     "name": "Collectives.Editor",
-    "rootNamespace": "",
+    "rootNamespace": "Collectives.Editor",
     "references": [
         "GUID:d21d0f80ed5bf494cbc71a8bccc5e9f1"
     ],
