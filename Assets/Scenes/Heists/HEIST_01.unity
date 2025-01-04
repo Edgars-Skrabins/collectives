@@ -178,6 +178,14 @@ PrefabInstance:
       propertyPath: m_heistTimerCS
       value: 
       objectReference: {fileID: 3556676417367261655}
+    - target: {fileID: 6644377013300394946, guid: 065386630c48f4951b34a514e572c689, type: 3}
+      propertyPath: m_heistFailScene
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644377013300394946, guid: 065386630c48f4951b34a514e572c689, type: 3}
+      propertyPath: m_heistSuccessScene
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
