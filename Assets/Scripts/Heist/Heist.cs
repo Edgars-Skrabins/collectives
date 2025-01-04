@@ -4,13 +4,19 @@ using Collectives.Utilities;
 using Collectives.Utilities.Constants;
 using Collectives.Valuable;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Collectives.HeistSystems
 {
     public class Heist : Singleton<Heist>
     {
-        [SerializeField] private EGameScenes m_endGameScene;
+        public UnityEvent OnHeistComplete;
+        public UnityEvent OnHeistFail;
+
+        [SerializeField] private HeistTimer m_heistTimerCS;
+        [SerializeField] private EGameScenes m_heistSuccessScene;
+        [SerializeField] private EGameScenes m_heistFailScene;
 
         private StaticHeistData m_staticHeistData;
         private DynamicHeistData m_dynamicHeistData = new DynamicHeistData(
@@ -42,6 +48,11 @@ namespace Collectives.HeistSystems
             m_staticHeistData = dataTakenFromTheUIMenuWhenPlayerClicksPlayOnThisHeist;
         }
 
+        public string GetFormattedHeistTime()
+        {
+            return m_heistTimerCS.GetFormattedElapsedTime();
+        }
+
         public StaticHeistData GetStaticHeistData()
         {
             return m_staticHeistData;
@@ -64,13 +75,17 @@ namespace Collectives.HeistSystems
             }
         }
 
-        public void LoadEndGameScene()
+        public void LoadHeistSuccessScene()
         {
             DontDestroyOnLoad(gameObject);
-            SceneManager.LoadScene((int)m_endGameScene);
+            SceneManager.LoadScene((int)m_heistSuccessScene);
         }
 
-        public void ExitEndGameScene()
+        public void LoadHeistFailScene()
+        {
+        }
+
+        public void ExitHeistSuccessScene()
         {
             Destroy(gameObject);
         }
