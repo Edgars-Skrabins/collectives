@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Collectives.Valuable;
 
@@ -33,5 +34,10 @@ namespace Collectives.HeistSystems
             amountOfValuablesRequired = 0;
             this.mustHaveValuableIDs = mustHaveValuableIDs;
         }
+    }
+
+    [Serializable]
+    public class HeistEvent
+    {
     }
 }

@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8056b27-9143-4b0f-9675-c159e3011971" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Heist/Heist.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Heist/Heist.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Heist/HeistTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Heist/HeistTypes.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +19,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Editor/GizmoEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/Character.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Heist/Heist.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Heist/HeistEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Heist/HeistTypes.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/Base64Utility.cs" root0="FORCE_HIGHLIGHTING" />
@@ -111,7 +112,7 @@
       <workItem from="1735742232562" duration="21000" />
       <workItem from="1735742277675" duration="6000" />
       <workItem from="1735742423846" duration="5898000" />
-      <workItem from="1736014145541" duration="782000" />
+      <workItem from="1736014145541" duration="1233000" />
     </task>
     <servers />
   </component>
