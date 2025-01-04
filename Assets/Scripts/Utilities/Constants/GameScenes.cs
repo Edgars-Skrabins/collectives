@@ -4,7 +4,8 @@ namespace Collectives.Utilities.Constants
     public enum EGameScenes
     {
         MAIN_MENU = 0,
-        HEIST_SUMMARY = 1,
-        HEIST_01 = 2,
+        HEIST_SUCCESS = 1,
+        HEIST_FAIL = 2,
+        HEIST_01 = 3,
     }
 }

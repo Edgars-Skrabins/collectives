@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MAIN_MENU.unity
     guid: 4f497fbd2cc7c4c53aab159d92170a4d
   - enabled: 1
-    path: Assets/Scenes/HEIST_SUMMARY.unity
+    path: Assets/Scenes/HEIST_SUCCESS.unity
     guid: 6a160fcbd51f944c68e3ea2701aa6e4c
   - enabled: 1
     path: Assets/Scenes/Heists/HEIST_01.unity
