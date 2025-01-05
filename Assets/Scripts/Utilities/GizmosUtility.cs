@@ -53,6 +53,14 @@ namespace Collectives.Utilities
             }
         }
 
+        public static void DrawRay(Vector3 origin, Vector3 direction, float distance, int layer, Color? color = null)
+        {
+            if (IsLayerGizmoEnabled(layer))
+            {
+                Gizmos.color = color ?? Color.green;
+                Gizmos.DrawRay(origin, direction * distance);
+            }
+        }
         public static bool[] GetLayerToggles()
         {
             return m_layerGizmoToggles;
