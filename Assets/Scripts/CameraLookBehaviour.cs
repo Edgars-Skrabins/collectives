@@ -1,22 +1,22 @@
 using System.Collections;
 using UnityEngine;
 
-public enum LookActionType
+public class CameraLookBehaviour : MonoBehaviour
 {
-    Turn, Wait
-}
+    private enum LookActionTypes
+    {
+        Turn, Wait
+    }
 
-[System.Serializable]
-public class LookAction
-{
-    public LookActionType actionType;
+    [System.Serializable]
+    private class LookAction
+    {
+        public LookActionTypes actionType;
 
-    public Vector3 targetPosition;
-    public float timeDuration;
-}
+        public Vector3 targetPosition;
+        public float timeDuration;
+    }
 
-public class AILookBehaviour : MonoBehaviour
-{
     [SerializeField] private LookAction[] m_lookActions;
     [SerializeField] private Transform m_objectToRotate;
 
@@ -33,10 +33,10 @@ public class AILookBehaviour : MonoBehaviour
             {
                 switch (_action.actionType)
                 {
-                    case LookActionType.Turn:
+                    case LookActionTypes.Turn:
                         yield return CO_ExecuteTurnBehaviourAction(m_objectToRotate, _action.targetPosition, _action.timeDuration);
                         break;
-                    case LookActionType.Wait:
+                    case LookActionTypes.Wait:
                         yield return CO_ExecuteWaitBehaviourAction(_action.timeDuration);
                         break;
                 }
@@ -80,7 +80,7 @@ public class AILookBehaviour : MonoBehaviour
 
         for (int i = 0; i < m_lookActions.Length; i++)
         {
-            if (m_lookActions[i].actionType == LookActionType.Turn)
+            if (m_lookActions[i].actionType == LookActionTypes.Turn)
             {
                 GizmoUtility.DrawWireSphere(m_lookActions[i].targetPosition, 0.5f, gameObject.layer);
             }

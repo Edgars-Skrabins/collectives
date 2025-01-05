@@ -549,22 +549,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8797321439705672971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 885ac8d1ff13843f7b212f0035cc8be5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e0e9bec4e8334c9d95977e38e2826d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_lookActions:
   - actionType: 0
-    targetPosition: {x: -3.06, y: -2.4, z: 5.84}
-    timeDuration: 2
-  - actionType: 1
-    targetPosition: {x: 3.06, y: 0, z: 5.84}
-    timeDuration: 1
+    targetPosition: {x: -3.4, y: -1.43, z: 5.7}
+    timeDuration: 1.12
   - actionType: 0
-    targetPosition: {x: 3.06, y: -4.9, z: 5.84}
-    timeDuration: 5
+    targetPosition: {x: 1.82, y: -1.43, z: 5.77}
+    timeDuration: 0.56
+  - actionType: 0
+    targetPosition: {x: 4.71, y: -1.43, z: 2.33}
+    timeDuration: 0.56
   - actionType: 1
-    targetPosition: {x: 3.06, y: 0, z: 5.84}
-    timeDuration: 2
+    targetPosition: {x: 4.71, y: -1.43, z: 2.33}
+    timeDuration: 1.12
+  - actionType: 0
+    targetPosition: {x: 1.82, y: -1.43, z: 5.77}
+    timeDuration: 0.56
   m_objectToRotate: {fileID: 1870209501035267083}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
