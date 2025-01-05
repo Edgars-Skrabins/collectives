@@ -24,7 +24,7 @@ namespace Collectives.HeistSystems
         public string GetFormattedElapsedTime()
         {
             int hours = (int)m_elapsedTime / 3600;
-            int minutes = (int)m_elapsedTime / 60;
+            int minutes = (int)m_elapsedTime / 60 % 60;
             int seconds = (int)m_elapsedTime % 60;
             return $"{hours:00}:{minutes:00}:{seconds:00}";
         }
