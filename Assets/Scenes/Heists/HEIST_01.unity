@@ -174,11 +174,59 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heist
       objectReference: {fileID: 0}
+    - target: {fileID: 6644377013300394946, guid: 065386630c48f4951b34a514e572c689, type: 3}
+      propertyPath: m_heistTimerCS
+      value: 
+      objectReference: {fileID: 3556676417367261655}
+    - target: {fileID: 6644377013300394946, guid: 065386630c48f4951b34a514e572c689, type: 3}
+      propertyPath: m_heistFailScene
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644377013300394946, guid: 065386630c48f4951b34a514e572c689, type: 3}
+      propertyPath: m_heistSuccessScene
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4817083366478603609, guid: 065386630c48f4951b34a514e572c689, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3556676417367261655}
+    - targetCorrespondingSourceObject: {fileID: 4817083366478603609, guid: 065386630c48f4951b34a514e572c689, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3556676417367261658}
   m_SourcePrefab: {fileID: 100100000, guid: 065386630c48f4951b34a514e572c689, type: 3}
+--- !u!1 &3556676417367261654 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4817083366478603609, guid: 065386630c48f4951b34a514e572c689, type: 3}
+  m_PrefabInstance: {fileID: 3556676417367261653}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3556676417367261655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3556676417367261654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544036f00f7d4470d9046297ed5432e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3556676417367261658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3556676417367261654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bdd70b3725844f1483399dec48a2cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heistEvents: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
