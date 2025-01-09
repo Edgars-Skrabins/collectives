@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Collectives
 {
-    public class DifficultyBasedSpawning : MonoBehaviour
+    public class ConditionallyBasedItemSpawner : MonoBehaviour
     {
         [SerializeField] private ObjectSpawnSettingSO m_spawnSetting;
 
