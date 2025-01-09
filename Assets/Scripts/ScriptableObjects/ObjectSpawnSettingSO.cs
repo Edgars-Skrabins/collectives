@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Collectives.Utilities.Constants;
 using UnityEngine;
 
-namespace Collectives
+namespace Collectives.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "ItemSpawnSetting", menuName = "Collectives/ItemSpawnSetting", order = 0)]
     public class ObjectSpawnSettingSO : ScriptableObject

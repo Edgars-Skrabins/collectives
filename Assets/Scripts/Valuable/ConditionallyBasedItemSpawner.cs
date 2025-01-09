@@ -1,9 +1,10 @@
 using Collectives.HeistSystems;
+using Collectives.ScriptableObjects;
 using Collectives.Utilities.Constants;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Collectives
+namespace Collectives.ObjectSystems
 {
     public class ConditionallyBasedItemSpawner : MonoBehaviour
     {
