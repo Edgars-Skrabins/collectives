@@ -9,6 +9,7 @@ namespace Collectives.ObjectSystems
     public class ConditionallyBasedItemSpawner : MonoBehaviour
     {
         [SerializeField] private ObjectSpawnSettingSO m_spawnSetting;
+        [SerializeField] private Transform[] m_possibleSpawnLocations;
 
         private void Start()
         {
@@ -21,8 +22,26 @@ namespace Collectives.ObjectSystems
             bool isOutOfSpawnChanceRange = Random.Range(0, 100) > spawnRate;
             if (isOutOfSpawnChanceRange)
             {
-                gameObject.SetActive(false);
+                EnableObjectAtSpawnLocation();
             }
+        }
+
+        private void EnableObjectAtSpawnLocation()
+        {
+            if (m_possibleSpawnLocations.Length > 1)
+            {
+                MoveObjectToSpawnLocation();
+            }
+
+            gameObject.SetActive(true);
+        }
+
+        private void MoveObjectToSpawnLocation()
+        {
+            int randomIndex = Random.Range(0, m_possibleSpawnLocations.Length);
+            Transform spawnTF = m_possibleSpawnLocations[randomIndex];
+            transform.position = spawnTF.position;
+            transform.rotation = spawnTF.rotation;
         }
 
         private int GetCurrentDifficultySpawnRate()
