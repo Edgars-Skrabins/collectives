@@ -7,8 +7,10 @@ using UnityEngine;
 namespace Collectives
 {
     [CreateAssetMenu(fileName = "ItemSpawnSetting", menuName = "Collectives/ItemSpawnSetting", order = 0)]
-    public class ItemSpawnSetting : ScriptableObject
+    public class ObjectSpawnSetting : ScriptableObject
     {
+        [SerializeField] public string m_itemName;
+
         [Serializable]
         public class SpawnRate
         {

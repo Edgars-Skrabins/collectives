@@ -6,16 +6,7 @@ namespace Collectives
 {
     public class DifficultyBasedSpawning : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        [SerializeField] private ObjectSpawnSetting m_spawnSetting;
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
     }
 }
