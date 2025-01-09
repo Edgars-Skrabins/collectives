@@ -14,12 +14,12 @@ namespace Collectives
         [Serializable]
         public class SpawnRate
         {
-            public EHeistDifficulty m_Difficulty;
+            public EHeistDifficulty difficulty;
             [Range(0, 100)]
-            public float m_SpawnRatePercentage;
+            public int spawnRatePercentage;
         }
 
-        public List<SpawnRate> m_SpawnRates = new List<SpawnRate>();
+        public List<SpawnRate> spawnRates = new List<SpawnRate>();
     }
 }
 
