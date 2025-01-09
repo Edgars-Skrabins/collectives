@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Collectives.Utilities.Constants;
 using UnityEngine;
@@ -22,4 +21,3 @@ namespace Collectives.ScriptableObjects
         public List<SpawnRate> spawnRates = new List<SpawnRate>();
     }
 }
-
