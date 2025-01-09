@@ -7,16 +7,16 @@ using UnityEngine;
 namespace Collectives
 {
     [CreateAssetMenu(fileName = "ItemSpawnSetting", menuName = "Collectives/ItemSpawnSetting", order = 0)]
-    public class ObjectSpawnSetting : ScriptableObject
+    public class ObjectSpawnSettingSO : ScriptableObject
     {
-        [SerializeField] public string m_itemName;
+        public string itemName;
 
         [Serializable]
         public class SpawnRate
         {
             public EHeistDifficulty m_Difficulty;
             [Range(0, 100)]
-            public float m_SpawnRatePercentage; // Percentage for this difficulty
+            public float m_SpawnRatePercentage;
         }
 
         public List<SpawnRate> m_SpawnRates = new List<SpawnRate>();

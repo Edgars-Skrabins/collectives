@@ -6,7 +6,7 @@ namespace Collectives
 {
     public class DifficultyBasedSpawning : MonoBehaviour
     {
-        [SerializeField] private ObjectSpawnSetting m_spawnSetting;
+        [SerializeField] private ObjectSpawnSettingSO m_spawnSetting;
 
     }
 }
