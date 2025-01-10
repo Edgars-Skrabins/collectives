@@ -2,23 +2,18 @@ using UnityEngine;
 
 namespace Collectives.PlayerSystems
 {
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(Player))]
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private CharacterController m_controller;
-        [SerializeField] private PlayerStamina m_staminaSystem;
-        [SerializeField] private PlayerGroundCheck m_groundCheck;
+        [SerializeField] private Player m_player;
 
         [SerializeField] private float m_walkSpeed;
         [SerializeField] private float m_sprintSpeedMultiplier;
         private float m_moveSpeed;
 
-        private bool m_isSprinting;
-
         private void FixedUpdate()
         {
             HandleMovement(GetMovementDirection());
-            HandleStamina();
         }
 
         private void HandleMovement(Vector3 _moveDirection)
@@ -28,27 +23,24 @@ namespace Collectives.PlayerSystems
 
         private void HandleStamina()
         {
-            if (m_isSprinting)
+            if (m_player.IsSprinting)
             {
-                m_staminaSystem.DrainStamina(Time.deltaTime);
-            }
-            else if (m_staminaSystem.GetCurrentStamina() < m_staminaSystem.GetMaxStamina())
-            {
-                bool isStanding = m_groundCheck.IsGrounded() && GetMovementDirection() == Vector2.zero;
-                m_staminaSystem.RegenerateStamina(isStanding, Time.deltaTime);
+                m_player.Stamina.DrainStamina(Time.deltaTime);
             }
         }
 
         private void Move(Vector2 _input)
         {
-            m_isSprinting = Input.GetKey(KeyCode.LeftShift) && m_staminaSystem.CanSprint() && m_groundCheck.IsGrounded();
-            m_moveSpeed = m_isSprinting ? m_walkSpeed * m_sprintSpeedMultiplier : m_walkSpeed;
+            bool canSprint = Input.GetKey(KeyCode.LeftShift) && m_player.Stamina.GetCurrentStamina() > 0 && m_player.IsGrounded;
+            m_player.SetSprinting(canSprint);
+            m_moveSpeed = m_player.IsSprinting ? m_walkSpeed * m_sprintSpeedMultiplier : m_walkSpeed;
 
             Vector3 movementVector = transform.right * _input.x + transform.forward * _input.y;
-            m_controller.Move(movementVector * m_moveSpeed * Time.deltaTime);
+            m_player.Controller.Move(movementVector * m_moveSpeed * Time.deltaTime);
+            HandleStamina();
         }
 
-        private Vector2 GetMovementDirection()
+        public Vector2 GetMovementDirection()
         {
             Vector2 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             return moveInput;

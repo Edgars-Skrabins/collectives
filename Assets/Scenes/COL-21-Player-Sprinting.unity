@@ -755,6 +755,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 785025905756199808, guid: 50fe2e88a42454ec8ad43bab353376fe, type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 960504112}
+    - target: {fileID: 785025905756199808, guid: 50fe2e88a42454ec8ad43bab353376fe, type: 3}
       propertyPath: m_walkSpeed
       value: 4
       objectReference: {fileID: 0}
@@ -770,10 +774,30 @@ PrefabInstance:
       propertyPath: m_sprintSpeedMultiplier
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 785025905756199808, guid: 50fe2e88a42454ec8ad43bab353376fe, type: 3}
+      propertyPath: m_minimumSprintStaminaCost
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1905276090272246699, guid: 50fe2e88a42454ec8ad43bab353376fe, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2752743254992870303, guid: 50fe2e88a42454ec8ad43bab353376fe, type: 3}
+      propertyPath: m_controller
+      value: 
+      objectReference: {fileID: 960504117}
+    - target: {fileID: 2752743254992870303, guid: 50fe2e88a42454ec8ad43bab353376fe, type: 3}
+      propertyPath: m_groundCheck
+      value: 
+      objectReference: {fileID: 960504110}
+    - target: {fileID: 2752743254992870303, guid: 50fe2e88a42454ec8ad43bab353376fe, type: 3}
+      propertyPath: m_staminaSystem
+      value: 
+      objectReference: {fileID: 960504111}
+    - target: {fileID: 3363515935735375805, guid: 50fe2e88a42454ec8ad43bab353376fe, type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 960504112}
     - target: {fileID: 8080864018565794910, guid: 50fe2e88a42454ec8ad43bab353376fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -853,7 +877,23 @@ MonoBehaviour:
   m_maxStamina: 100
   m_staminaRegenRate: 5
   m_standingRegenMultiplier: 1.5
-  m_staminaDrainRate: 10
+  m_staminaDrainRate: 20
+--- !u!114 &960504112 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2752743254992870303, guid: 50fe2e88a42454ec8ad43bab353376fe, type: 3}
+  m_PrefabInstance: {fileID: 960504108}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960504109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8633f05fc5749a0a3b409a5dd187a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!143 &960504117 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 6504985449567196583, guid: 50fe2e88a42454ec8ad43bab353376fe, type: 3}
+  m_PrefabInstance: {fileID: 960504108}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1197616674
 GameObject:
   m_ObjectHideFlags: 0

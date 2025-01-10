@@ -2,12 +2,11 @@
 
 namespace Collectives.PlayerSystems
 {
-    [RequireComponent(typeof(CharacterController), typeof(PlayerGroundCheck))]
+    [RequireComponent(typeof(Player))]
     public class PlayerJump : MonoBehaviour
     {
-        [SerializeField] private PlayerGroundCheck m_groundCheck;
-        [SerializeField] private CharacterController m_controller;
-        [Space]
+        [SerializeField] private Player m_player;
+
         [SerializeField] private float m_jumpHeight;
         [SerializeField] private float m_gravity;
 
@@ -22,13 +21,13 @@ namespace Collectives.PlayerSystems
         {
             ApplyGroundedForce();
 
-            if (_jumpInput && m_groundCheck.IsGrounded())
+            if (_jumpInput && m_player.IsGrounded)
             {
                 DoJump();
             }
 
             ApplyGravity();
-            m_controller.Move(m_velocity * Time.deltaTime);
+            m_player.Controller.Move(m_velocity * Time.deltaTime);
         }
 
         private void DoJump()
@@ -38,7 +37,7 @@ namespace Collectives.PlayerSystems
 
         private void ApplyGroundedForce()
         {
-            if (m_groundCheck.IsGrounded() && m_velocity.y < 0)
+            if (m_player.IsGrounded && m_velocity.y < 0)
             {
                 m_velocity.y = -2f;
             }

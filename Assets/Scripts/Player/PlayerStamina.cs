@@ -2,20 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Collectives
+namespace Collectives.PlayerSystems
 {
     public class PlayerStamina : MonoBehaviour
     {
+        [SerializeField] private Player m_player;
         [SerializeField] private float m_maxStamina;
         [SerializeField] private float m_staminaRegenRate;
         [SerializeField] private float m_standingRegenMultiplier;
         [SerializeField] private float m_staminaDrainRate;
-
         private float m_currentStamina;
 
         private void Start()
         {
             m_currentStamina = m_maxStamina;
+        }
+
+        private void FixedUpdate()
+        {
+            HandleRegeneration();
+        }
+
+        private void HandleRegeneration()
+        {
+            if (m_currentStamina < m_maxStamina)
+            {
+                bool isStanding = m_player.IsGrounded && m_player.Movement.GetMovementDirection() == Vector2.zero;
+                RegenerateStamina(isStanding, Time.deltaTime);
+            }
         }
 
         public void DrainStamina(float _deltaTime)
@@ -29,11 +43,6 @@ namespace Collectives
             float regenRate = _isNotMoving ? m_staminaRegenRate * m_standingRegenMultiplier : m_staminaRegenRate;
             m_currentStamina += regenRate * _deltaTime;
             m_currentStamina = Mathf.Clamp(m_currentStamina, 0, m_maxStamina);
-        }
-
-        public bool CanSprint()
-        {
-            return m_currentStamina > 0;
         }
 
         public float GetCurrentStamina()
