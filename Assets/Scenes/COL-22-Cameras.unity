@@ -565,9 +565,6 @@ MonoBehaviour:
   - actionType: 1
     targetPosition: {x: 4.71, y: -1.43, z: 2.33}
     timeDuration: 1.12
-  - actionType: 0
-    targetPosition: {x: 1.82, y: -1.43, z: 5.77}
-    timeDuration: 0.56
   m_objectToRotate: {fileID: 1870209501035267083}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
