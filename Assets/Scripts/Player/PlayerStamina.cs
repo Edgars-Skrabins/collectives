@@ -27,7 +27,7 @@ namespace Collectives.PlayerSystems
         {
             if (m_currentStamina < m_maxStamina)
             {
-                bool isStanding = m_player.IsGrounded && m_player.Movement.GetMovementDirection() == Vector2.zero;
+                bool isStanding = m_player.GetIsGrounded() && m_player.GetMovementSystem().GetMovementDirection() == Vector2.zero;
                 RegenerateStamina(isStanding, Time.deltaTime);
             }
         }

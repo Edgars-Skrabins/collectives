@@ -13,33 +13,41 @@ namespace Collectives.PlayerSystems
         public event Action OnStartSprint;
         public event Action OnStopSprint;
 
-        public bool IsGrounded => m_groundCheck != null && m_groundCheck.IsGrounded();
-        public bool IsSprinting
+        public bool GetIsGrounded()
         {
-            get => m_isSprinting;
-            private set
-            {
-                if (m_isSprinting == value) return;
+            return m_groundCheck != null && m_groundCheck.IsGrounded();
+        }
 
-                m_isSprinting = value;
-                if (m_isSprinting)
-                {
-                    OnStartSprint?.Invoke();
-                }
-                else
-                {
-                    OnStopSprint?.Invoke();
-                }
+        public bool GetIsSprinting()
+        {
+            return m_isSprinting;
+        }
+        public void SetSprinting(bool _value)
+        {
+            if (m_isSprinting == _value) return;
+
+            m_isSprinting = _value;
+            if (m_isSprinting)
+            {
+                OnStartSprint?.Invoke();
+            }
+            else
+            {
+                OnStopSprint?.Invoke();
             }
         }
 
-        public void SetSprinting(bool _isSprinting)
+        public CharacterController GetCharacterController()
         {
-            IsSprinting = _isSprinting;
+            return m_controller;
         }
-
-        public CharacterController Controller => m_controller;
-        public PlayerStamina Stamina => m_staminaSystem;
-        public PlayerMovement Movement => m_movementSystem;
+        public PlayerStamina GetStaminaSystem()
+        {
+            return m_staminaSystem;
+        }
+        public PlayerMovement GetMovementSystem()
+        {
+            return m_movementSystem;
+        }
     }
 }

@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace Collectives.PlayerSystems
 {
-    [RequireComponent(typeof(Player))]
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private Player m_player;
@@ -23,20 +22,20 @@ namespace Collectives.PlayerSystems
 
         private void HandleStamina()
         {
-            if (m_player.IsSprinting)
+            if (m_player.GetIsSprinting())
             {
-                m_player.Stamina.DrainStamina(Time.deltaTime);
+                m_player.GetStaminaSystem().DrainStamina(Time.deltaTime);
             }
         }
 
         private void Move(Vector2 _input)
         {
-            bool canSprint = Input.GetKey(KeyCode.LeftShift) && m_player.Stamina.GetCurrentStamina() > 0 && m_player.IsGrounded;
+            bool canSprint = Input.GetKey(KeyCode.LeftShift) && m_player.GetStaminaSystem().GetCurrentStamina() > 1f && m_player.GetIsGrounded() && GetMovementDirection() != Vector2.zero;
             m_player.SetSprinting(canSprint);
-            m_moveSpeed = m_player.IsSprinting ? m_walkSpeed * m_sprintSpeedMultiplier : m_walkSpeed;
+            m_moveSpeed = m_player.GetIsSprinting() ? m_walkSpeed * m_sprintSpeedMultiplier : m_walkSpeed;
 
             Vector3 movementVector = transform.right * _input.x + transform.forward * _input.y;
-            m_player.Controller.Move(movementVector * m_moveSpeed * Time.deltaTime);
+            m_player.GetCharacterController().Move(movementVector * m_moveSpeed * Time.deltaTime);
             HandleStamina();
         }
 
