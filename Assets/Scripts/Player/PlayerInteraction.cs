@@ -29,26 +29,42 @@ namespace Collectives.PlayerSystems
 
         private void InitializeCamera()
         {
-            m_playerCamera = m_player.Cameras.MainCamera;
+            m_playerCamera = m_player.GetCameraSystem().GetMainCamera();
         }
 
         private void CheckForInteractable()
         {
             Ray ray = new Ray(m_playerCamera.transform.position, m_playerCamera.transform.forward);
-            if (Physics.Raycast(ray, out RaycastHit hit, m_interactionDistance, m_interactableLayer))
+            RaycastHit[] hits = new RaycastHit[1];
+            Physics.RaycastNonAlloc(ray, hits, m_interactionDistance, m_interactableLayer);
+
+            if (hits[0].collider == null)
             {
-                Interactable interactable = hit.collider.GetComponent<Interactable>();
-                if (interactable != null && interactable != m_currentInteractable)
+                HandleInteractableNotInRange();
+                return;
+            }
+            else
+            {
+                HandleInteractableInRange(hits);
+            }
+        }
+
+        private void HandleInteractableInRange(RaycastHit[] _hits)
+        {
+            for (int i = 0; i < _hits.Length; i++)
+            {
+                if (_hits[i].collider.TryGetComponent(out Interactable interactable) && interactable != m_currentInteractable)
                 {
                     m_currentInteractable = interactable;
                     m_currentInteractable.HandleInteractInRange(m_player);
                 }
             }
-            else
-            {
-                m_currentInteractable?.HandleInteractNoLongerInRange(m_player);
-                m_currentInteractable = null;
-            }
+        }
+
+        private void HandleInteractableNotInRange()
+        {
+            m_currentInteractable?.HandleInteractNoLongerInRange(m_player);
+            m_currentInteractable = null;
         }
 
         private void HandleInteractionInput()

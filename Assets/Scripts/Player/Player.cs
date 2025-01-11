@@ -6,6 +6,6 @@ namespace Collectives.PlayerSystems
     {
         [SerializeField] private PlayerCamera m_cameraSystem;
 
-        public PlayerCamera Cameras => m_cameraSystem;
+        public PlayerCamera GetCameraSystem() { return m_cameraSystem; }
     }
 }

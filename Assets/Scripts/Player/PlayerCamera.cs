@@ -8,6 +8,6 @@ namespace Collectives.PlayerSystems
     {
         [SerializeField] private Camera m_mainCamera;
 
-        public Camera MainCamera => m_mainCamera;
+        public Camera GetMainCamera() { return m_mainCamera; }
     }
 }
