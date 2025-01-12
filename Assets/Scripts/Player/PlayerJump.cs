@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 
 namespace Collectives.PlayerSystems
-
 {
     [RequireComponent(typeof(CharacterController), typeof(PlayerGroundCheck))]
     public class PlayerJump : MonoBehaviour
     {
-        private PlayerGroundCheck m_groundCheck;
+        [SerializeField] private PlayerGroundCheck m_groundCheck;
         [SerializeField] private CharacterController m_controller;
         [Space]
         [SerializeField] private float m_jumpHeight;
