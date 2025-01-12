@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 3687843617767617776}
   - component: {fileID: 3363515935735375805}
   - component: {fileID: 8634116946094937416}
+  - component: {fileID: 6706709828551441976}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -275,7 +276,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_controller: {fileID: 6504985449567196583}
-  m_moveSpeed: 5
+  m_staminaSystem: {fileID: 6706709828551441976}
+  m_groundCheck: {fileID: 8131910719467453364}
+  m_walkSpeed: 4
+  m_sprintSpeedMultiplier: 2
 --- !u!114 &3687843617767617776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce66c24f43bc4c468d66223dd7c0b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_groundCheck: {fileID: 0}
   m_controller: {fileID: 6504985449567196583}
   m_jumpHeight: 1
   m_gravity: 10
@@ -342,6 +347,22 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6706709828551441976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905276090272246699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7315e27ed03749a0b9ea15309f1ada1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxStamina: 100
+  m_staminaRegenRate: 5
+  m_standingRegenMultiplier: 1.5
+  m_staminaDrainRate: 10
 --- !u!1 &2780278906917928161
 GameObject:
   m_ObjectHideFlags: 0
