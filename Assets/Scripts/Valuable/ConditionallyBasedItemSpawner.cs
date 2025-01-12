@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using Collectives.HeistSystems;
 using Collectives.ScriptableObjects;
 using Collectives.Utilities.Constants;
@@ -47,8 +49,15 @@ namespace Collectives.ObjectSystems
         private int GetCurrentDifficultySpawnRate()
         {
             EHeistDifficulty heistDifficulty = Heist.I.GetStaticHeistData().difficulty;
-            ObjectSpawnSettingSO.SpawnRate currentDifficultySpawnSetting = m_spawnSetting.spawnRates.Find(
-                setting => setting.difficulty == heistDifficulty);
+            ObjectSpawnSettingSO.SpawnRate currentDifficultySpawnSetting =
+                m_spawnSetting.spawnRates.FirstOrDefault(setting => setting.difficulty == heistDifficulty);
+
+            if (currentDifficultySpawnSetting == null)
+            {
+                Debug.LogError("No spawn rate found for difficulty " + heistDifficulty);
+                throw new NullReferenceException();
+            }
+
             return currentDifficultySpawnSetting.spawnRatePercentage;
         }
     }
