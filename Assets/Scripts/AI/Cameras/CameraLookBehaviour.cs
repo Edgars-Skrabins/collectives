@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Collectives.Utilities;
 using UnityEngine;
 
 namespace Collectives.AICameraSystems
@@ -46,11 +47,11 @@ namespace Collectives.AICameraSystems
             {
                 if (action.actionType == CameraLookBehaviourTypes.Turn)
                 {
-                    GizmoUtility.DrawWireSphere(action.targetPosition, 0.5f, gameObject.layer, Color.green);
+                    GizmosUtility.DrawWireSphere(action.targetPosition, 0.5f, gameObject.layer, Color.green);
                 }
                 else
                 {
-                    GizmoUtility.DrawWireSphere(action.targetPosition, 0.25f, gameObject.layer, Color.red);
+                    GizmosUtility.DrawWireSphere(action.targetPosition, 0.25f, gameObject.layer, Color.red);
                 }
             }
         }
