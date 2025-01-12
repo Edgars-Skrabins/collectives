@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117f50f84968648f5948a2b7feb36fbb, type: 3}
   m_Name: SpawnSetting_MoneyBag
   m_EditorClassIdentifier: 
-  itemName: 
   spawnRates:
+  - difficulty: 0
+    spawnRatePercentage: 100
   - difficulty: 1
     spawnRatePercentage: 100
-  - difficulty: 6
-    spawnRatePercentage: 100
-  - difficulty: 12
+  - difficulty: 2
     spawnRatePercentage: 80
-  - difficulty: 12
+  - difficulty: 3
     spawnRatePercentage: 80
