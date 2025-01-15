@@ -1,21 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+using Collectives.Utilities.Constants;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Collectives
 {
     public class HeistSuccessScreen : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        public void GoToMainMenu()
         {
-        
+            SceneManager.LoadScene((int)EGameScenes.MAIN_MENU);
         }
 
-        // Update is called once per frame
-        void Update()
+        public void QuitGame()
         {
-        
+            Application.Quit();
         }
     }
 }
