@@ -1,17 +1,15 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Collectives.UI
 {
-    public class CustomButton : MonoBehaviour
+    public abstract class CustomButton : MonoBehaviour
     {
-        // Start is called before the first frame update
-        private void Start()
-        {
-        }
+        public UnityEvent OnClick;
 
-        // Update is called once per frame
-        private void Update()
+        public virtual void HandleOnClick()
         {
+            OnClick?.Invoke();
         }
     }
 }
