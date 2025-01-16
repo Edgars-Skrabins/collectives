@@ -1,4 +1,4 @@
-namespace Collectives.Utilities.Constants
+namespace Collectives.GlobalConstants
 {
     // These indexes should match the build settings heist indexes
     public enum EGameScenes

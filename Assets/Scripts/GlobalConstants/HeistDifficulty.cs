@@ -1,4 +1,4 @@
-namespace Collectives.Utilities.Constants
+namespace Collectives.GlobalConstants
 {
     public enum EHeistDifficulty
     {

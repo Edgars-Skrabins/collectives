@@ -1,9 +1,9 @@
-using Collectives.Utilities.Constants;
+using Collectives.GlobalConstants;
 using UnityEngine.SceneManagement;
 
-namespace Collectives.UI
+namespace Collectives.Utilities
 {
-    public static class GlobalUINavigation
+    public static class SceneNavigation
     {
         public static void GoToScene(EGameScenes _scene)
         {
