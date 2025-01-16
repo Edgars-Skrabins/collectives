@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 416037825}
   - component: {fileID: 416037824}
   - component: {fileID: 416037823}
-  - component: {fileID: 416037822}
+  - component: {fileID: 416037826}
   m_Layer: 5
   m_Name: QuitBTN
   m_TagString: Untagged
@@ -364,22 +364,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &416037822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416037820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a6a6437e3afd46cb8e03786c700280e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnClick:
-    m_PersistentCalls:
-      m_Calls: []
-  m_sceneToGoTo: 0
 --- !u!114 &416037823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,8 +408,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 416037822}
-        m_TargetAssemblyTypeName: Collectives.UI.SceneSwitchButton, Collectives.UI
+      - m_Target: {fileID: 416037826}
+        m_TargetAssemblyTypeName: Collectives.UI.UIQuitButton, Collectives.UI
         m_MethodName: HandleOnClick
         m_Mode: 1
         m_Arguments:
@@ -474,6 +458,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416037820}
   m_CullTransparentMesh: 1
+--- !u!114 &416037826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416037820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da56212b5654540ce87ef7117065e878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &939365726
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,16 +2,12 @@ using UnityEngine;
 
 namespace Collectives.UI
 {
-    public class UIQuitButton : MonoBehaviour
+    public class UIQuitButton : UICustomButton
     {
-        // Start is called before the first frame update
-        private void Start()
+        public override void HandleOnClick()
         {
-        }
-
-        // Update is called once per frame
-        private void Update()
-        {
+            base.HandleOnClick();
+            Application.Quit();
         }
     }
 }
