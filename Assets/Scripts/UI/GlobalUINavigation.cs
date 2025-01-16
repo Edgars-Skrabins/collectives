@@ -1,6 +1,4 @@
-using System;
 using Collectives.Utilities.Constants;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Collectives.UI
@@ -9,15 +7,7 @@ namespace Collectives.UI
     {
         public static void GoToScene(EGameScenes _scene)
         {
-            try
-            {
-                SceneManager.LoadScene((int)_scene);
-            }
-            catch (Exception exception)
-            {
-                Debug.LogError("Failed to load scene: " + _scene);
-                throw;
-            }
+            SceneManager.LoadScene((int)_scene);
         }
     }
 }
