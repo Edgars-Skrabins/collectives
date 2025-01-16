@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using Collectives.GlobalConstants;
 using Collectives.Utilities;
-using Collectives.Utilities.Constants;
 using Collectives.Valuable;
 using UnityEngine;
 using UnityEngine.Events;
@@ -26,12 +26,6 @@ namespace Collectives.HeistSystems
         {
             base.Awake();
             InitializeStaticHeistData();
-            InitializeDynamicHeistData();
-        }
-
-        private void InitializeDynamicHeistData()
-        {
-            m_dynamicHeistData = new DynamicHeistData();
         }
 
         private void InitializeStaticHeistData()

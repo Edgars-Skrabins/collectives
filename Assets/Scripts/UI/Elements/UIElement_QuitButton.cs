@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Collectives.UI
 {
-    public class UIQuitButton : UICustomButton
+    public class UIElement_QuitButton : UIElement_CustomButton
     {
         public override void HandleOnClick()
         {

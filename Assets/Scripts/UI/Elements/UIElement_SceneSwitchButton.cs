@@ -1,16 +1,17 @@
-using Collectives.Utilities.Constants;
+using Collectives.GlobalConstants;
+using Collectives.Utilities;
 using UnityEngine;
 
 namespace Collectives.UI
 {
-    public class UISceneSwitchButton : UICustomButton
+    public class UIElement_SceneSwitchButton : UIElement_CustomButton
     {
         [SerializeField] private EGameScenes m_sceneToGoTo;
 
         public override void HandleOnClick()
         {
             base.HandleOnClick();
-            GlobalUINavigation.GoToScene(m_sceneToGoTo);
+            SceneNavigation.GoToScene(m_sceneToGoTo);
         }
     }
 }
