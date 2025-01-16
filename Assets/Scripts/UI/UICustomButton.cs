@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace Collectives.UI
 {
-    public abstract class CustomButton : MonoBehaviour
+    public abstract class UICustomButton : MonoBehaviour
     {
         public UnityEvent OnClick;
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Collectives.UI
 {
-    public class SceneSwitchButton : CustomButton
+    public class UISceneSwitchButton : UICustomButton
     {
         [SerializeField] private EGameScenes m_sceneToGoTo;
 
