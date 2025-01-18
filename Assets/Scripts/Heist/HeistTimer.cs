@@ -1,19 +1,30 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Collectives.HeistSystems
 {
     public class HeistTimer : MonoBehaviour
     {
         private float m_elapsedTime;
+        public UnityEvent<string> OnTimerUpdated;
 
         private void Update()
         {
             CountElapsedTime();
+            HandleTimerUpdatedEvent();
         }
 
         private void CountElapsedTime()
         {
             m_elapsedTime += Time.deltaTime;
+        }
+
+        private void HandleTimerUpdatedEvent()
+        {
+            if (m_elapsedTime % 1f < Time.deltaTime)
+            {
+                OnTimerUpdated?.Invoke(GetFormattedElapsedTime());
+            }
         }
 
         public int GetElapsedSeconds()

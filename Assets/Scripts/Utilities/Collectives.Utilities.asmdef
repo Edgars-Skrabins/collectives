@@ -1,7 +1,7 @@
 {
     "name": "Collectives.Utilities",
     "rootNamespace": "Collectives.Utilities",
-    "references": [],
+    "references": ["Collectives.GlobalConstants"],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
