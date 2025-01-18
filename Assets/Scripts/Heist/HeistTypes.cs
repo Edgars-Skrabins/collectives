@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Collectives.Utilities.Constants;
 using Collectives.Valuable;
 
 namespace Collectives.HeistSystems
@@ -22,15 +23,17 @@ namespace Collectives.HeistSystems
 
     public struct StaticHeistData
     {
-        public string heistName;
-        public string heistDescription;
+        public string name;
+        public string description;
+        public EHeistDifficulty difficulty;
         public int amountOfValuablesRequired;
         public int[] mustHaveValuableIDs;
 
         public StaticHeistData(int[] mustHaveValuableIDs)
         {
-            heistName = "";
-            heistDescription = "";
+            name = "";
+            description = "";
+            difficulty = EHeistDifficulty.EASY;
             amountOfValuablesRequired = 0;
             this.mustHaveValuableIDs = mustHaveValuableIDs;
         }

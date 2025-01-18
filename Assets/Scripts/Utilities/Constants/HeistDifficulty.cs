@@ -2,9 +2,9 @@ namespace Collectives.Utilities.Constants
 {
     public enum EHeistDifficulty
     {
-        EASY = 1,
-        MEDIUM = 6,
-        HARD = 12,
-        VERY_HARD = 12,
+        EASY = 0,
+        MEDIUM = 1,
+        HARD = 2,
+        VERY_HARD = 3,
     }
 }

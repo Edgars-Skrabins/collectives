@@ -39,8 +39,8 @@ namespace Collectives.HeistSystems
             // Get the settings that the player has selected for this heist.
             StaticHeistData dataTakenFromTheUIMenuWhenPlayerClicksPlayOnThisHeist = new StaticHeistData
             {
-                heistName = "Test Heist",
-                heistDescription = "Test Heist Description",
+                name = "Test Heist",
+                description = "Test Heist Description",
                 amountOfValuablesRequired = 6,
                 mustHaveValuableIDs = new[] {55, 999},
             };

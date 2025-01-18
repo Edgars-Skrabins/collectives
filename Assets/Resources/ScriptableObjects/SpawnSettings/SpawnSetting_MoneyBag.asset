@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117f50f84968648f5948a2b7feb36fbb, type: 3}
+  m_Name: SpawnSetting_MoneyBag
+  m_EditorClassIdentifier: 
+  spawnRates:
+  - difficulty: 0
+    spawnRatePercentage: 100
+  - difficulty: 1
+    spawnRatePercentage: 100
+  - difficulty: 2
+    spawnRatePercentage: 80
+  - difficulty: 3
+    spawnRatePercentage: 80
