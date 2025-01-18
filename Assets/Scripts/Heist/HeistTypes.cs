@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Collectives.GlobalConstants;
-using Collectives.Valuable;
+using Collectives.ValuableSystems;
 
 namespace Collectives.HeistSystems
 {
@@ -10,14 +10,14 @@ namespace Collectives.HeistSystems
         public bool heistRequirementsMet;
         public int acquiredMoney;
         public int acquiredExperience;
-        public readonly List<ValuableData> collectedValuables;
+        public readonly List<Valuable> collectedValuables;
 
-        public DynamicHeistData(List<ValuableData> _collectedValuables)
+        public DynamicHeistData(List<Valuable> _collectedValuables)
         {
             heistRequirementsMet = false;
             acquiredMoney = 0;
             acquiredExperience = 0;
-            collectedValuables = new List<ValuableData>();
+            collectedValuables = new List<Valuable>();
         }
     }
 
