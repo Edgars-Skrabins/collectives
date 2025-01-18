@@ -23,8 +23,8 @@ namespace Collectives.HeistSystems
             StaticHeistData staticHeistData = Heist.I.GetStaticHeistData();
             DynamicHeistData dynamicHeistData = Heist.I.GetDynamicHeistData();
 
-            m_heistName.text = staticHeistData.heistName;
-            m_heistDescription.text = staticHeistData.heistDescription;
+            m_heistName.text = staticHeistData.name;
+            m_heistDescription.text = staticHeistData.description;
             m_timeElapsed.text = Heist.I.GetFormattedHeistTime();
             m_stolenValuableAmount.text = dynamicHeistData.collectedValuables.Count.ToString();
             m_moneyEarned.text = dynamicHeistData.acquiredMoney.ToString();

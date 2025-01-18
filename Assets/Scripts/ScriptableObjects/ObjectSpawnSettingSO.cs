@@ -1,5 +1,5 @@
 using System;
-using Collectives.Utilities.Constants;
+using Collectives.GlobalConstants;
 using UnityEngine;
 
 namespace Collectives.ScriptableObjects

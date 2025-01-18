@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
+using Collectives.GlobalConstants;
 using Collectives.HeistSystems;
 using Collectives.ScriptableObjects;
-using Collectives.Utilities.Constants;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

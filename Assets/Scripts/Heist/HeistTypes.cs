@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Collectives.Utilities.Constants;
+using Collectives.GlobalConstants;
 using Collectives.Valuable;
 
 namespace Collectives.HeistSystems
