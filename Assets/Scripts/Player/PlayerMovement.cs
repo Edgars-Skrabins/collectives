@@ -2,18 +2,26 @@ using UnityEngine;
 
 namespace Collectives.PlayerSystems
 {
-    [RequireComponent(typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private CharacterController m_controller;
-        [SerializeField] private PlayerStamina m_staminaSystem;
-        [SerializeField] private PlayerGroundCheck m_groundCheck;
+        [SerializeField] private Player m_player;
+
+        private CharacterController m_controller;
+        private PlayerStamina m_staminaSystem;
+        private PlayerGroundCheck m_groundCheck;
 
         [SerializeField] private float m_walkSpeed;
         [SerializeField] private float m_sprintSpeedMultiplier;
         private float m_moveSpeed;
 
         private bool m_isSprinting;
+
+        private void Awake()
+        {
+            m_controller = m_player.GetCharacterController();
+            m_staminaSystem = m_player.GetPlayerStamina();
+            m_groundCheck = m_player.GetPlayerGroundCheck();
+        }
 
         private void FixedUpdate()
         {

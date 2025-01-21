@@ -2,16 +2,22 @@
 
 namespace Collectives.PlayerSystems
 {
-    [RequireComponent(typeof(CharacterController), typeof(PlayerGroundCheck))]
     public class PlayerJump : MonoBehaviour
     {
-        [SerializeField] private PlayerGroundCheck m_groundCheck;
-        [SerializeField] private CharacterController m_controller;
-        [Space]
+        [SerializeField] private Player m_player;
         [SerializeField] private float m_jumpHeight;
         [SerializeField] private float m_gravity;
 
+        private PlayerGroundCheck m_groundCheck;
+        private CharacterController m_controller;
+
         private Vector3 m_velocity;
+
+        private void Awake()
+        {
+            m_groundCheck = m_player.GetPlayerGroundCheck();
+            m_controller = m_player.GetCharacterController();
+        }
 
         private void Update()
         {
