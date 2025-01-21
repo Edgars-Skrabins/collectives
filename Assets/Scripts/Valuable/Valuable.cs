@@ -20,5 +20,7 @@ namespace Collectives.Valuable
         [SerializeField] private EWeightClasses m_weightClass;
         [SerializeField] private int m_monetaryValue;
         [SerializeField] private int m_experienceValue;
+
+        public EWeightClasses GetWeightClass() { return m_weightClass; }
     }
 }

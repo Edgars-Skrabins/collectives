@@ -12,15 +12,27 @@ namespace Collectives.PlayerSystems
 
         [SerializeField] private float m_walkSpeed;
         [SerializeField] private float m_sprintSpeedMultiplier;
+
         private float m_moveSpeed;
 
+        private float m_moveSpeedMultiplier;
         private bool m_isSprinting;
 
         private void Awake()
         {
+            InitializeComponents();
+        }
+
+        private void InitializeComponents()
+        {
             m_controller = m_player.GetCharacterController();
             m_staminaSystem = m_player.GetPlayerStamina();
             m_groundCheck = m_player.GetPlayerGroundCheck();
+        }
+
+        public void SetMoveSpeedMultiplier(float _multiplierValue)
+        {
+            m_moveSpeedMultiplier = _multiplierValue;
         }
 
         private void FixedUpdate()
@@ -53,7 +65,7 @@ namespace Collectives.PlayerSystems
             m_moveSpeed = m_isSprinting ? m_walkSpeed * m_sprintSpeedMultiplier : m_walkSpeed;
 
             Vector3 movementVector = transform.right * _input.x + transform.forward * _input.y;
-            m_controller.Move(movementVector * m_moveSpeed * Time.deltaTime);
+            m_controller.Move(movementVector * m_moveSpeed * m_moveSpeedMultiplier * Time.deltaTime);
         }
 
         private Vector2 GetMovementDirection()
