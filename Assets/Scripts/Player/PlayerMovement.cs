@@ -28,6 +28,8 @@ namespace Collectives.PlayerSystems
             m_controller = m_player.GetCharacterController();
             m_staminaSystem = m_player.GetPlayerStamina();
             m_groundCheck = m_player.GetPlayerGroundCheck();
+
+            SetMoveSpeedMultiplier(1f);
         }
 
         public void SetMoveSpeedMultiplier(float _multiplierValue)
@@ -63,6 +65,15 @@ namespace Collectives.PlayerSystems
         {
             m_isSprinting = Input.GetKey(KeyCode.LeftShift) && m_staminaSystem.CanSprint() && m_groundCheck.IsGrounded();
             m_moveSpeed = m_isSprinting ? m_walkSpeed * m_sprintSpeedMultiplier : m_walkSpeed;
+
+            if (m_isSprinting)
+            {
+                m_player.StartSprinting();
+            }
+            else
+            {
+                m_player.StopSprinting();
+            }
 
             Vector3 movementVector = transform.right * _input.x + transform.forward * _input.y;
             m_controller.Move(movementVector * m_moveSpeed * m_moveSpeedMultiplier * Time.deltaTime);

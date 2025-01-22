@@ -1,3 +1,4 @@
+using Collectives.PlayerSystems;
 using UnityEngine;
 
 namespace Collectives.Valuable
@@ -11,6 +12,7 @@ namespace Collectives.Valuable
         public int id;
     }
 
+    [RequireComponent(typeof(Rigidbody))]
     public class Valuable : Interactable
     {
         [Space(5)]
@@ -21,6 +23,32 @@ namespace Collectives.Valuable
         [SerializeField] private int m_monetaryValue;
         [SerializeField] private int m_experienceValue;
 
-        public EWeightClasses GetWeightClass() { return m_weightClass; }
+        [SerializeField] private GameObject m_mainGFX;
+        [SerializeField] private Collider m_mainGFXCollider;
+        [SerializeField] private GameObject m_carryGFX;
+        [SerializeField] private Collider m_carryGFXCollider;
+
+        public EWeightClasses GetWeightClass()
+        {
+            return m_weightClass;
+        }
+
+        private void OnEnable()
+        {
+            m_mainGFX.SetActive(true);
+            m_mainGFXCollider.enabled = true;
+            m_carryGFX.SetActive(false);
+            m_carryGFXCollider.enabled = false;
+        }
+
+        public override void AttemptInteract(Player _interactor)
+        {
+            base.AttemptInteract(_interactor);
+            _interactor.GetCarrySystem().SetCurrentValuable(this);
+            m_mainGFX.SetActive(false);
+            m_mainGFXCollider.enabled = false;
+            m_carryGFX.SetActive(true);
+            m_carryGFXCollider.enabled = true;
+        }
     }
 }
