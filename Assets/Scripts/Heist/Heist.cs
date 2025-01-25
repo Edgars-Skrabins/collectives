@@ -56,7 +56,7 @@ namespace Collectives.HeistSystems
             return m_dynamicHeistData;
         }
 
-        public void AddValuableToDropOff(Valuable _valuable)
+        public void AddValuableToCollected(Valuable _valuable)
         {
             m_dynamicHeistData.collectedValuables.Add(_valuable);
             m_dynamicHeistData.acquiredMoney += _valuable.GetValuableData().monetaryValue;
