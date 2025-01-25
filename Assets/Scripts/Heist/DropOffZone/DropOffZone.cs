@@ -24,7 +24,10 @@ namespace Collectives.DropOffZone
 
         private void HandleValuableCollision(IValuable _valuable)
         {
-            DropOffZoneData dropOffZoneData = new DropOffZoneData {name = m_name, id = m_id};
+            DropOffZoneData dropOffZoneData = new DropOffZoneData
+            {
+                name = m_name, id = m_id
+            };
             _valuable.Collect(dropOffZoneData);
         }
 
