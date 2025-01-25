@@ -1,3 +1,4 @@
+using Collectives.DropOffZone;
 using Collectives.ScriptableObjects;
 using UnityEngine;
 
@@ -7,9 +8,8 @@ namespace Collectives.ValuableSystems
     {
         [SerializeField] private ValuableDataSO m_valuableData;
 
-        public void Collect()
+        public void Collect(DropOffZoneData _dropOffZoneData)
         {
-
         }
 
         public ValuableDataSO GetValuableData()

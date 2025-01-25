@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Collectives.DropOffZone;
 using Collectives.GlobalConstants;
 using Collectives.Utilities;
 using Collectives.ValuableSystems;
@@ -14,7 +15,7 @@ namespace Collectives.HeistSystems
     {
         public UnityEvent OnHeistComplete;
         public UnityEvent OnHeistFail;
-        public event Action<IValuable> OnValuableCollected;
+        public event Action<IValuable, DropOffZoneData> OnValuableCollected;
 
         [SerializeField] private HeistTimer m_heistTimerCS;
 
@@ -56,13 +57,13 @@ namespace Collectives.HeistSystems
             return m_dynamicHeistData;
         }
 
-        public void AddValuableToCollected(Valuable _valuable)
+        public void AddValuableToCollected(Valuable _valuable, DropOffZoneData _dropOffZoneData)
         {
             m_dynamicHeistData.collectedValuables.Add(_valuable);
             m_dynamicHeistData.acquiredMoney += _valuable.GetValuableData().monetaryValue;
             m_dynamicHeistData.acquiredExperience += _valuable.GetValuableData().experienceValue;
 
-            OnValuableCollected?.Invoke(_valuable);
+            OnValuableCollected?.Invoke(_valuable, _dropOffZoneData);
 
             if (!m_dynamicHeistData.heistRequirementsMet)
             {

@@ -7,6 +7,7 @@ namespace Collectives.DropOffZone
     {
         [SerializeField] private TriggerCollisionBroadcaster m_triggerCollisionBroadcaster;
         [SerializeField] private string m_name;
+        [SerializeField] private int m_id;
 
         private void OnEnable()
         {
@@ -23,8 +24,10 @@ namespace Collectives.DropOffZone
 
         private void HandleValuableCollision(IValuable _valuable)
         {
-            _valuable.Collect();
+            DropOffZoneData dropOffZoneData = new DropOffZoneData {name = m_name, id = m_id};
+            _valuable.Collect(dropOffZoneData);
         }
+
 
         private void OnDisable()
         {
