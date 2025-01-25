@@ -6,6 +6,7 @@ namespace Collectives.DropOffZone
     public class DropOffZone : MonoBehaviour
     {
         [SerializeField] private TriggerCollisionBroadcaster m_triggerCollisionBroadcaster;
+        [SerializeField] private string m_name;
 
         private void OnEnable()
         {

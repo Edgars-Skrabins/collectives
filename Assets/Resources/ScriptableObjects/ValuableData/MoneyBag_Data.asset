@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84527a3d246cc405ab0deaa2718f0702, type: 3}
   m_Name: MoneyBag_Data
   m_EditorClassIdentifier: 
-  valuableName: Money bag
+  name: Money bag
   weightClass: 0
   monetaryValue: 50
   experienceValue: 350
