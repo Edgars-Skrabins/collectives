@@ -1,11 +1,11 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Collectives
 {
     public class TriggerCollisionBroadcaster : MonoBehaviour
     {
-        public UnityEvent<Collider> OnTriggerEnterEvent;
+        public event Action<Collider> OnTriggerEnterEvent;
 
         private void OnTriggerEnter(Collider _collider)
         {

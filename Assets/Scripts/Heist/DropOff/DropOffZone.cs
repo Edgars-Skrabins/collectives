@@ -1,16 +1,36 @@
+using System;
+using Collectives.ValuableSystems;
 using UnityEngine;
-using UnityEngine.Events;
 
-namespace Collectives
+namespace Collectives.DropOffZone
 {
     public class DropOffZone : MonoBehaviour
     {
-        public Collider m_collider;
-        public UnityEvent OnItemEnterDropOff;
+        public event Action<IValuable> OnValuableEnterDropOff;
+        [SerializeField] private TriggerCollisionBroadcaster m_triggerCollisionBroadcaster;
 
-        public void OnItemCollisionInDropOff(Collider _collider)
+        private void OnEnable()
         {
-            // if (_collider.TryGetComponent(IVa))
+            m_triggerCollisionBroadcaster.OnTriggerEnterEvent += OnItemCollisionInDropOff;
+        }
+
+        private void OnItemCollisionInDropOff(Collider _collider)
+        {
+            if (_collider.TryGetComponent(out IValuable valuable))
+            {
+                HandleValuableCollision(valuable);
+            }
+        }
+
+        private void HandleValuableCollision(IValuable _valuable)
+        {
+            OnValuableEnterDropOff?.Invoke(_valuable);
+            _valuable.Collect();
+        }
+
+        private void OnDisable()
+        {
+            m_triggerCollisionBroadcaster.OnTriggerEnterEvent -= OnItemCollisionInDropOff;
         }
     }
 }

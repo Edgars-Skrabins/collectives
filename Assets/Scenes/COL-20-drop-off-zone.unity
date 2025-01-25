@@ -151,8 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58753a1e63d6481f8a71bba2eea0d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_collider: {fileID: 1609686172}
-  OnItemEnterDropOff:
+  OnValuableEnterDropOff:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &17761822
