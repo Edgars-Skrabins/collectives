@@ -1,24 +1,20 @@
+using Collectives.ScriptableObjects;
 using UnityEngine;
 
-namespace Collectives.Valuable
+namespace Collectives.ValuableSystems
 {
-    public struct ValuableData
+    public class Valuable : Interactable, IValuable
     {
-        public string name;
-        public EWeightClasses weightClass;
-        public int monetaryValue;
-        public int experienceValue;
-        public int id;
-    }
+        [SerializeField] private ValuableDataSO m_valuableData;
 
-    public class Valuable : Interactable
-    {
-        [Space(5)]
-        [Header("Valuable settings")]
-        [Space(5)]
-        [SerializeField] private string m_valuableName;
-        [SerializeField] private EWeightClasses m_weightClass;
-        [SerializeField] private int m_monetaryValue;
-        [SerializeField] private int m_experienceValue;
+        public void Collect()
+        {
+
+        }
+
+        public ValuableDataSO GetValuableData()
+        {
+            return m_valuableData;
+        }
     }
 }

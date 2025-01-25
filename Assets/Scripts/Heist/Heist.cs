@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Collectives.GlobalConstants;
 using Collectives.Utilities;
-using Collectives.Valuable;
+using Collectives.ValuableSystems;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -19,8 +19,7 @@ namespace Collectives.HeistSystems
         [SerializeField] private EGameScenes m_heistFailScene;
 
         private StaticHeistData m_staticHeistData;
-        private DynamicHeistData m_dynamicHeistData = new DynamicHeistData(
-            new List<ValuableData>());
+        private DynamicHeistData m_dynamicHeistData = new DynamicHeistData(new List<Valuable>());
 
         protected override void Awake()
         {
@@ -57,11 +56,11 @@ namespace Collectives.HeistSystems
             return m_dynamicHeistData;
         }
 
-        public void AddValuableToDropOff(ValuableData _valuable)
+        public void AddValuableToDropOff(Valuable _valuable)
         {
             m_dynamicHeistData.collectedValuables.Add(_valuable);
-            m_dynamicHeistData.acquiredMoney += _valuable.monetaryValue;
-            m_dynamicHeistData.acquiredExperience += _valuable.experienceValue;
+            m_dynamicHeistData.acquiredMoney += _valuable.GetValuableData().monetaryValue;
+            m_dynamicHeistData.acquiredExperience += _valuable.GetValuableData().experienceValue;
 
             if (!m_dynamicHeistData.heistRequirementsMet)
             {
@@ -102,8 +101,10 @@ namespace Collectives.HeistSystems
                 return true;
             }
 
-            return m_staticHeistData.mustHaveValuableIDs.All(id =>
-                m_dynamicHeistData.collectedValuables.Any(valuable => valuable.id == id));
+            return m_staticHeistData.mustHaveValuableIDs.All(
+                id =>
+                    m_dynamicHeistData.collectedValuables.Any(valuable => valuable.GetID() == id)
+            );
         }
     }
 }
