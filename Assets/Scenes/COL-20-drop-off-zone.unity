@@ -132,9 +132,9 @@ GameObject:
   m_Component:
   - component: {fileID: 17761822}
   - component: {fileID: 17761821}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DropOffZone
-  m_TagString: Untagged
+  m_TagString: DropOffZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,7 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58753a1e63d6481f8a71bba2eea0d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_collider: {fileID: 0}
+  m_collider: {fileID: 1609686172}
+  OnItemEnterDropOff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &17761822
 Transform:
   m_ObjectHideFlags: 0
@@ -180,7 +183,7 @@ GameObject:
   - component: {fileID: 1609686173}
   - component: {fileID: 1609686172}
   - component: {fileID: 1609686171}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
