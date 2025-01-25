@@ -62,7 +62,7 @@ namespace Collectives.HeistSystems
 
             if (!m_dynamicHeistData.heistRequirementsMet)
             {
-                CheckHeistRequirements();
+                UpdateHeistRequirementsStatus();
             }
         }
 
@@ -81,7 +81,7 @@ namespace Collectives.HeistSystems
             Destroy(gameObject);
         }
 
-        private void CheckHeistRequirements()
+        private void UpdateHeistRequirementsStatus()
         {
             bool hasCollectedRequiredAmount = m_dynamicHeistData.collectedValuables.Count >= m_staticHeistData.amountOfValuablesRequired;
             bool hasCollectedMustHaveValuables = HasCollectedMustHaveValuables();
