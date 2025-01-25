@@ -1,4 +1,3 @@
-using System;
 using Collectives.ValuableSystems;
 using UnityEngine;
 
@@ -6,7 +5,6 @@ namespace Collectives.DropOffZone
 {
     public class DropOffZone : MonoBehaviour
     {
-        public event Action<IValuable> OnValuableEnterDropOff;
         [SerializeField] private TriggerCollisionBroadcaster m_triggerCollisionBroadcaster;
 
         private void OnEnable()
@@ -24,7 +22,6 @@ namespace Collectives.DropOffZone
 
         private void HandleValuableCollision(IValuable _valuable)
         {
-            OnValuableEnterDropOff?.Invoke(_valuable);
             _valuable.Collect();
         }
 
