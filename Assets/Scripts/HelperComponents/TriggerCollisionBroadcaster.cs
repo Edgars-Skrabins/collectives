@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Collectives
+namespace Collectives.HelperComponents
 {
     public class TriggerCollisionBroadcaster : MonoBehaviour
     {
