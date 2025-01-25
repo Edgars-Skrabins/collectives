@@ -15,8 +15,6 @@ namespace Collectives.HeistSystems
         public UnityEvent OnHeistFail;
 
         [SerializeField] private HeistTimer m_heistTimerCS;
-        [SerializeField] private EGameScenes m_heistSuccessScene;
-        [SerializeField] private EGameScenes m_heistFailScene;
 
         private StaticHeistData m_staticHeistData;
         private DynamicHeistData m_dynamicHeistData = new DynamicHeistData(new List<Valuable>());
@@ -71,7 +69,7 @@ namespace Collectives.HeistSystems
         public void LoadHeistSuccessScene()
         {
             DontDestroyOnLoad(gameObject);
-            SceneManager.LoadScene((int)m_heistSuccessScene);
+            SceneManager.LoadScene((int)EGameScenes.HEIST_SUCCESS);
         }
 
         public void LoadHeistFailScene()
