@@ -42,8 +42,11 @@ resharper_keep_existing_embedded_block_arrangement = false
 resharper_keep_existing_expr_member_arrangement = false
 resharper_keep_existing_invocation_parens_arrangement = false
 resharper_keep_existing_linebreaks = false
+resharper_keep_existing_list_patterns_arrangement = false
 resharper_keep_existing_primary_constructor_declaration_parens_arrangement = false
+resharper_keep_existing_property_patterns_arrangement = false
 resharper_keep_existing_switch_expression_arrangement = false
+resharper_max_initializer_elements_on_line = 1
 resharper_place_simple_accessorholder_on_single_line = false
 resharper_place_simple_embedded_statement_on_same_line = true
 resharper_place_simple_initializer_on_single_line = false
@@ -52,6 +55,8 @@ resharper_treat_case_statement_with_break_as_simple = false
 resharper_wrap_before_primary_constructor_declaration_rpar = true
 resharper_wrap_before_type_parameter_langle = false
 resharper_wrap_lines = true
+resharper_wrap_list_pattern = chop_if_long
+resharper_wrap_property_pattern = chop_if_long
 
 [*.css]
 ij_css_align_closing_brace_with_properties = false

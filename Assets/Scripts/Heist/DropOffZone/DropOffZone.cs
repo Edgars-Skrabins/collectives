@@ -26,8 +26,10 @@ namespace Collectives.DropOffZone
         {
             DropOffZoneData dropOffZoneData = new DropOffZoneData
             {
-                name = m_name, id = m_id
+                name = m_name,
+                id = m_id
             };
+
             _valuable.Collect(dropOffZoneData);
         }
 
