@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Collectives.GlobalConstants;
@@ -13,6 +14,7 @@ namespace Collectives.HeistSystems
     {
         public UnityEvent OnHeistComplete;
         public UnityEvent OnHeistFail;
+        public event Action<IValuable> OnValuableCollected;
 
         [SerializeField] private HeistTimer m_heistTimerCS;
 
@@ -59,6 +61,8 @@ namespace Collectives.HeistSystems
             m_dynamicHeistData.collectedValuables.Add(_valuable);
             m_dynamicHeistData.acquiredMoney += _valuable.GetValuableData().monetaryValue;
             m_dynamicHeistData.acquiredExperience += _valuable.GetValuableData().experienceValue;
+
+            OnValuableCollected?.Invoke(_valuable);
 
             if (!m_dynamicHeistData.heistRequirementsMet)
             {
