@@ -1,16 +1,12 @@
 using Collectives.PlayerSystems;
+using Collectives.ScriptableObjects;
 using UnityEngine;
 
-namespace Collectives.Valuable
+namespace Collectives.ValuableSystems
 {
-    public struct ValuableData
+    public class Valuable : Interactable, IValuable
     {
-        public string name;
-        public EWeightClasses weightClass;
-        public int monetaryValue;
-        public int experienceValue;
-        public int id;
-    }
+        [SerializeField] private ValuableDataSO m_valuableData;
 
     [RequireComponent(typeof(Rigidbody))]
     public class Valuable : Interactable
@@ -49,6 +45,14 @@ namespace Collectives.Valuable
             m_mainGFXCollider.enabled = false;
             m_carryGFX.SetActive(true);
             m_carryGFXCollider.enabled = true;
+        public void Collect()
+        {
+
+        }
+
+        public ValuableDataSO GetValuableData()
+        {
+            return m_valuableData;
         }
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6398974313981693839}
   - component: {fileID: 2093028228820221725}
+  - component: {fileID: 2084323621669160246}
   m_Layer: 0
   m_Name: Valuable
   m_TagString: Untagged
@@ -52,6 +53,21 @@ MonoBehaviour:
       m_Calls: []
   m_interactPossibleHighlight: {fileID: 0}
   m_interactImpossibleHighlight: {fileID: 0}
+  m_valuableName: 
   m_weightClass: 0
   m_monetaryValue: 0
   m_experienceValue: 0
+--- !u!114 &2084323621669160246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5313532706341465727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22cb5afce64e94c0096a17bc676f4571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_spawnSetting: {fileID: 11400000, guid: 61d4419fc83a54a51b9894632e901d15, type: 2}
+  m_possibleSpawnLocations: []

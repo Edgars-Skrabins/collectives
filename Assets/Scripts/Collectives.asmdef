@@ -2,7 +2,8 @@
     "name": "Collectives",
     "rootNamespace": "Collectives",
     "references": [
-        "GUID:d21d0f80ed5bf494cbc71a8bccc5e9f1"
+        "GUID:d21d0f80ed5bf494cbc71a8bccc5e9f1",
+        "Collectives.GlobalConstants"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Collectives.Valuable;
+using Collectives.GlobalConstants;
+using Collectives.ValuableSystems;
 
 namespace Collectives.HeistSystems
 {
@@ -9,28 +10,30 @@ namespace Collectives.HeistSystems
         public bool heistRequirementsMet;
         public int acquiredMoney;
         public int acquiredExperience;
-        public readonly List<ValuableData> collectedValuables;
+        public readonly List<Valuable> collectedValuables;
 
-        public DynamicHeistData(List<ValuableData> _collectedValuables)
+        public DynamicHeistData(List<Valuable> _collectedValuables)
         {
             heistRequirementsMet = false;
             acquiredMoney = 0;
             acquiredExperience = 0;
-            collectedValuables = new List<ValuableData>();
+            collectedValuables = new List<Valuable>();
         }
     }
 
     public struct StaticHeistData
     {
-        public string heistName;
-        public string heistDescription;
+        public string name;
+        public string description;
+        public EHeistDifficulty difficulty;
         public int amountOfValuablesRequired;
         public int[] mustHaveValuableIDs;
 
         public StaticHeistData(int[] mustHaveValuableIDs)
         {
-            heistName = "";
-            heistDescription = "";
+            name = "";
+            description = "";
+            difficulty = EHeistDifficulty.EASY;
             amountOfValuablesRequired = 0;
             this.mustHaveValuableIDs = mustHaveValuableIDs;
         }

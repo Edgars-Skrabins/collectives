@@ -14,6 +14,7 @@ namespace Collectives
         public UnityEvent OnInteractSuccess;
         public UnityEvent OnInteractFailure;
 
+        [SerializeField] private int id;
         [SerializeField] private GameObject m_interactPossibleHighlight;
         [SerializeField] private GameObject m_interactImpossibleHighlight;
 
@@ -45,6 +46,11 @@ namespace Collectives
             m_playersThatCanInteract.Remove(_interactor);
             DisablePossibleInteractHighlight();
             DisableImpossibleInteractHighlight();
+        }
+
+        public int GetID()
+        {
+            return id;
         }
 
         protected virtual void Interact()
