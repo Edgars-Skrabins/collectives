@@ -1,3 +1,4 @@
+using Collectives.GlobalConstants;
 using UnityEngine;
 
 namespace Collectives.ScriptableObjects
@@ -8,6 +9,7 @@ namespace Collectives.ScriptableObjects
         public string heistName;
         public string description;
         public int amountOfValuablesRequired;
+        public EHeistTactics tactic;
         public int[] mustHaveValuableIDs;
     }
 }

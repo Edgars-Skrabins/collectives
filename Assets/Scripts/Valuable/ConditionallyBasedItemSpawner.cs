@@ -48,7 +48,7 @@ namespace Collectives.ObjectSystems
 
         private int GetCurrentDifficultySpawnRate()
         {
-            EHeistDifficulty heistDifficulty = Heist.I.GetStaticHeistData().difficulty;
+            EHeistDifficulty heistDifficulty = Heist.I.GetHeistData().difficulty;
             ObjectSpawnSettingSO.SpawnRate currentDifficultySpawnSetting =
                 m_spawnSetting.spawnRates.FirstOrDefault(setting => setting.difficulty == heistDifficulty);
 

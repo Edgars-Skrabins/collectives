@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Collectives.GlobalConstants;
+using Collectives.ScriptableObjects;
 using Collectives.Utilities;
 using Collectives.ValuableSystems;
 using UnityEngine;
@@ -18,37 +19,17 @@ namespace Collectives.HeistSystems
         [SerializeField] private EGameScenes m_heistSuccessScene;
         [SerializeField] private EGameScenes m_heistFailScene;
 
-        private StaticHeistData m_staticHeistData;
+        private HeistDataSO m_heistDataSO;
         private DynamicHeistData m_dynamicHeistData = new DynamicHeistData(new List<Valuable>());
-
-        protected override void Awake()
-        {
-            base.Awake();
-            InitializeStaticHeistData();
-        }
-
-        private void InitializeStaticHeistData()
-        {
-            // Get the settings that the player has selected for this heist.
-            StaticHeistData dataTakenFromTheUIMenuWhenPlayerClicksPlayOnThisHeist = new StaticHeistData
-            {
-                name = "Test Heist",
-                description = "Test Heist Description",
-                amountOfValuablesRequired = 6,
-                mustHaveValuableIDs = new[] {55, 999},
-            };
-
-            m_staticHeistData = dataTakenFromTheUIMenuWhenPlayerClicksPlayOnThisHeist;
-        }
 
         public string GetFormattedHeistTime()
         {
             return m_heistTimerCS.GetFormattedElapsedTime();
         }
 
-        public StaticHeistData GetStaticHeistData()
+        public HeistDataSO GetHeistData()
         {
-            return m_staticHeistData;
+            return m_heistDataSO;
         }
 
         public DynamicHeistData GetDynamicHeistData()
@@ -85,7 +66,7 @@ namespace Collectives.HeistSystems
 
         private void CheckHeistRequirements()
         {
-            bool hasCollectedRequiredAmount = m_dynamicHeistData.collectedValuables.Count >= m_staticHeistData.amountOfValuablesRequired;
+            bool hasCollectedRequiredAmount = m_dynamicHeistData.collectedValuables.Count >= m_heistDataSO.amountOfValuablesRequired;
             bool hasCollectedMustHaveValuables = HasCollectedMustHaveValuables();
 
             if (hasCollectedRequiredAmount && hasCollectedMustHaveValuables)
@@ -96,12 +77,12 @@ namespace Collectives.HeistSystems
 
         private bool HasCollectedMustHaveValuables()
         {
-            if (m_staticHeistData.mustHaveValuableIDs.Length <= 0)
+            if (m_heistDataSO.mustHaveValuableIDs.Length <= 0)
             {
                 return true;
             }
 
-            return m_staticHeistData.mustHaveValuableIDs.All(
+            return m_heistDataSO.mustHaveValuableIDs.All(
                 id =>
                     m_dynamicHeistData.collectedValuables.Any(valuable => valuable.GetID() == id)
             );

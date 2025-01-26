@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Collectives.GlobalConstants;
 using Collectives.ValuableSystems;
 
 namespace Collectives.HeistSystems
@@ -19,28 +17,5 @@ namespace Collectives.HeistSystems
             acquiredExperience = 0;
             collectedValuables = new List<Valuable>();
         }
-    }
-
-    public struct StaticHeistData
-    {
-        public string name;
-        public string description;
-        public EHeistDifficulty difficulty;
-        public int amountOfValuablesRequired;
-        public int[] mustHaveValuableIDs;
-
-        public StaticHeistData(int[] mustHaveValuableIDs)
-        {
-            name = "";
-            description = "";
-            difficulty = EHeistDifficulty.EASY;
-            amountOfValuablesRequired = 0;
-            this.mustHaveValuableIDs = mustHaveValuableIDs;
-        }
-    }
-
-    [Serializable]
-    public class HeistEvent
-    {
     }
 }

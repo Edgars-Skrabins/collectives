@@ -1,3 +1,4 @@
+using Collectives.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace Collectives.HeistSystems
 
         private void InitializeUIElements()
         {
-            StaticHeistData staticHeistData = Heist.I.GetStaticHeistData();
+            HeistDataSO staticHeistData = Heist.I.GetHeistData();
             DynamicHeistData dynamicHeistData = Heist.I.GetDynamicHeistData();
 
             m_heistName.text = staticHeistData.name;
