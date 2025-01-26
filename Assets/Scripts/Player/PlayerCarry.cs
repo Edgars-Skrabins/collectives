@@ -53,7 +53,7 @@ namespace Collectives.PlayerSystems
             m_currentValuable.gameObject.layer = 0; // Default Layer
             m_currentValuable.transform.SetParent(null);
             m_currentValuable = null;
-            m_player.GetPlayerMovement().SetMoveSpeedMultiplier(1f);
+            m_player.ResetSpeedMultiplier();
         }
 
         private void PickUp()
@@ -63,7 +63,7 @@ namespace Collectives.PlayerSystems
             m_currentValuable.transform.SetParent(m_carryTransform);
             m_currentValuable.transform.localPosition = Vector3.zero;
             m_currentValuable.transform.localEulerAngles = Vector3.zero;
-            m_player.GetPlayerMovement().SetMoveSpeedMultiplier(GetWeightToSpeedMultiplier(m_currentValuable.GetWeightClass()));
+            m_player.SetSpeedMultiplier(GetWeightToSpeedMultiplier(m_currentValuable.GetWeightClass()));
         }
 
         private float GetWeightToSpeedMultiplier(EWeightClasses _weightClass)

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -63,6 +64,16 @@ namespace Collectives.PlayerSystems
                 m_isSprinting = false;
                 OnStopSprint?.Invoke();
             }
+        }
+
+        public void ResetSpeedMultiplier()
+        {
+            m_movementSystem.ResetMoveSpeedMultiplier();
+        }
+
+        public void SetSpeedMultiplier(float _value)
+        {
+            m_movementSystem.SetMoveSpeedMultiplier(_value);
         }
     }
 }

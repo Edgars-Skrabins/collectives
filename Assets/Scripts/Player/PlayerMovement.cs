@@ -11,6 +11,7 @@ namespace Collectives.PlayerSystems
         private PlayerGroundCheck m_groundCheck;
 
         [SerializeField] private float m_walkSpeed;
+        [SerializeField] private float m_defaultMoveSpeedMultiplier;
         [SerializeField] private float m_sprintSpeedMultiplier;
 
         private float m_moveSpeed;
@@ -28,8 +29,12 @@ namespace Collectives.PlayerSystems
             m_controller = m_player.GetCharacterController();
             m_staminaSystem = m_player.GetPlayerStamina();
             m_groundCheck = m_player.GetPlayerGroundCheck();
+            ResetMoveSpeedMultiplier();
+        }
 
-            SetMoveSpeedMultiplier(1f);
+        public void ResetMoveSpeedMultiplier()
+        {
+            SetMoveSpeedMultiplier(m_defaultMoveSpeedMultiplier);
         }
 
         public void SetMoveSpeedMultiplier(float _multiplierValue)
