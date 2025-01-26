@@ -8,17 +8,6 @@ namespace Collectives.ValuableSystems
     {
         [SerializeField] private ValuableDataSO m_valuableData;
 
-    [RequireComponent(typeof(Rigidbody))]
-    public class Valuable : Interactable
-    {
-        [Space(5)]
-        [Header("Valuable settings")]
-        [Space(5)]
-        [SerializeField] private string m_valuableName;
-        [SerializeField] private EWeightClasses m_weightClass;
-        [SerializeField] private int m_monetaryValue;
-        [SerializeField] private int m_experienceValue;
-
         [SerializeField] private GameObject m_mainGFX;
         [SerializeField] private Collider m_mainGFXCollider;
         [SerializeField] private GameObject m_carryGFX;
@@ -26,7 +15,7 @@ namespace Collectives.ValuableSystems
 
         public EWeightClasses GetWeightClass()
         {
-            return m_weightClass;
+            return m_valuableData.weightClass;
         }
 
         private void OnEnable()
@@ -45,6 +34,8 @@ namespace Collectives.ValuableSystems
             m_mainGFXCollider.enabled = false;
             m_carryGFX.SetActive(true);
             m_carryGFXCollider.enabled = true;
+        }
+
         public void Collect()
         {
 

@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Collectives.Valuable;
+using Collectives.ValuableSystems;
 using UnityEngine;
 
 namespace Collectives.PlayerSystems
@@ -11,7 +11,7 @@ namespace Collectives.PlayerSystems
         [SerializeField] private Transform m_carryTransform;
         [SerializeField] private float m_throwForce;
 
-        private Valuable.Valuable m_currentValuable;
+        private Valuable m_currentValuable;
 
         private void Update()
         {
@@ -35,7 +35,7 @@ namespace Collectives.PlayerSystems
             SetCurrentValuable(null);
         }
 
-        public void SetCurrentValuable(Valuable.Valuable _newValuable)
+        public void SetCurrentValuable(Valuable _newValuable)
         {
             if (_newValuable != null)
             {
