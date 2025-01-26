@@ -27,17 +27,17 @@ namespace Collectives.HeistSystems
             return m_heistTimerCS.GetFormattedElapsedTime();
         }
 
-        public HeistDataSO GetHeistData()
+        public HeistDataSO GetData()
         {
             return m_heistDataSO;
         }
 
-        public DynamicHeistData GetDynamicHeistData()
+        public DynamicHeistData GetDynamicData()
         {
             return m_dynamicHeistData;
         }
 
-        public EHeistDifficulty GetHestDifficulty()
+        public EHeistDifficulty GetDifficulty()
         {
             // TODO: Marking this for implementing difficulty selection in the future.
             return EHeistDifficulty.EASY;
