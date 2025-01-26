@@ -36,7 +36,10 @@ namespace Collectives.HeistSystems
                 name = "Test Heist",
                 description = "Test Heist Description",
                 amountOfValuablesRequired = 6,
-                mustHaveValuableIDs = new[] {55, 999},
+                mustHaveValuableIDs = new[]
+                {
+                    55, 999
+                }
             };
 
             m_staticHeistData = dataTakenFromTheUIMenuWhenPlayerClicksPlayOnThisHeist;
@@ -105,8 +108,7 @@ namespace Collectives.HeistSystems
             }
 
             return m_staticHeistData.mustHaveValuableIDs.All(
-                id =>
-                    m_dynamicHeistData.collectedValuables.Any(valuable => valuable.GetID() == id)
+                id => m_dynamicHeistData.collectedValuables.Any(valuable => valuable.GetID() == id)
             );
         }
     }
