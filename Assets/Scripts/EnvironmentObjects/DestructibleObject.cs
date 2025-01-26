@@ -8,7 +8,7 @@ namespace Collectives.EnvironmentObjects
     {
         public UnityEvent OnObjectDestroyed;
         [SerializeField] private int m_hitsToBreak;
-        [SerializeField] private GameObject m_onDestroyVFX;
+        [SerializeField] private GameObject m_destructionVFX;
 
         public void Damage(int _damage)
         {
@@ -22,7 +22,7 @@ namespace Collectives.EnvironmentObjects
         private void DestroyObject()
         {
             OnObjectDestroyed?.Invoke();
-            m_onDestroyVFX.SetActive(true);
+            m_destructionVFX.SetActive(true);
         }
     }
 }

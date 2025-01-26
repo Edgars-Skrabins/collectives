@@ -80,4 +80,4 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_hitsToBreak: 2
-  m_onDestroyVFX: {fileID: 3807760109557239654}
+  m_destructionVFX: {fileID: 3807760109557239654}
