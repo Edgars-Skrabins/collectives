@@ -37,6 +37,12 @@ namespace Collectives.HeistSystems
             return m_dynamicHeistData;
         }
 
+        public EHeistDifficulty GetHestDifficulty()
+        {
+            // TODO: Marking this for implementing difficulty selection in the future.
+            return EHeistDifficulty.EASY;
+        }
+
         public void AddValuableToDropOff(Valuable _valuable)
         {
             m_dynamicHeistData.collectedValuables.Add(_valuable);
