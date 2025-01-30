@@ -63,7 +63,7 @@ namespace Collectives.HeistSystems
         private void SetCurrentTacticState(EHeistTacticState _newTacticState)
         {
             m_currentTacticState = _newTacticState;
-            bool heistIsStealthOnly = m_heistDataSO.tacticsRules == EHeistTacticsRules.STEALTH_ONLY;
+            bool heistIsStealthOnly = m_heistDataSO.tacticRules == EHeistTacticRules.STEALTH_ONLY;
 
             if (_newTacticState == EHeistTacticState.LOUD && heistIsStealthOnly)
             {

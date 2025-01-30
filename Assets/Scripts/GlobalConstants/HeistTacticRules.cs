@@ -1,6 +1,6 @@
 namespace Collectives.GlobalConstants
 {
-    public enum EHeistTacticsRules
+    public enum EHeistTacticRules
     {
         STEALTH_ONLY,
         LOUD_ONLY,

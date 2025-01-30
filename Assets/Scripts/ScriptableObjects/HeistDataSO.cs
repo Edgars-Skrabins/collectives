@@ -9,7 +9,7 @@ namespace Collectives.ScriptableObjects
         public string heistName;
         public string description;
         public int amountOfValuablesRequired;
-        public EHeistTacticsRules tacticsRules;
+        public EHeistTacticRules tacticRules;
         public int[] mustHaveValuableIDs;
     }
 }
