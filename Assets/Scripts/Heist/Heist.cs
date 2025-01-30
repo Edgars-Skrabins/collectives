@@ -18,6 +18,7 @@ namespace Collectives.HeistSystems
         [SerializeField] private HeistTimer m_heistTimerCS;
         [SerializeField] private EGameScenes m_heistSuccessScene;
         [SerializeField] private EGameScenes m_heistFailScene;
+        private EHeistTacticState m_currentTacticState;
 
         private HeistDataSO m_heistDataSO;
         private DynamicHeistData m_dynamicHeistData = new DynamicHeistData(new List<Valuable>());
@@ -68,6 +69,27 @@ namespace Collectives.HeistSystems
         public void ExitHeistSuccessScene()
         {
             Destroy(gameObject);
+        }
+
+        public EHeistTacticState GetCurrentTacticState()
+        {
+            return m_currentTacticState;
+        }
+
+        private void SetCurrentTacticState(EHeistTacticState _newTacticState)
+        {
+            m_currentTacticState = _newTacticState;
+            bool heistIsStealthOnly = m_heistDataSO.tacticsRules == EHeistTacticsRules.STEALTH_ONLY;
+
+            if (_newTacticState == EHeistTacticState.LOUD && heistIsStealthOnly)
+            {
+                FailHeist();
+            }
+        }
+
+        private void FailHeist()
+        {
+            Invoke(nameof(LoadHeistFailScene), 1f);
         }
 
         private void CheckHeistRequirements()
