@@ -30,14 +30,6 @@ namespace Collectives.HeistSystems
             return (int)m_elapsedTime;
         }
 
-        public string GetFormattedElapsedTime()
-        {
-            int hours = (int)m_elapsedTime / 3600;
-            int minutes = (int)m_elapsedTime / 60 % 60;
-            int seconds = (int)m_elapsedTime % 60;
-            return $"{hours:00}:{minutes:00}:{seconds:00}";
-        }
-
         private void CountElapsedTime()
         {
             m_elapsedTime += Time.deltaTime;
@@ -47,7 +39,7 @@ namespace Collectives.HeistSystems
         {
             if (m_elapsedTime % 1f < Time.deltaTime)
             {
-                OnTimerUpdated?.Invoke(GetFormattedElapsedTime());
+                OnTimerUpdated?.Invoke(m_elapsedTime.ToTimeFormat());
             }
         }
     }
