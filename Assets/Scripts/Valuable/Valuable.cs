@@ -7,9 +7,10 @@ namespace Collectives.ValuableSystems
     public class Valuable : Interactable, IValuable
     {
         [SerializeField] private ValuableDataSO m_valuableData;
-
+        [Space]
         [SerializeField] private GameObject m_mainGFX;
         [SerializeField] private Collider m_mainGFXCollider;
+        [Space]
         [SerializeField] private GameObject m_carryGFX;
         [SerializeField] private Collider m_carryGFXCollider;
 
@@ -19,6 +20,11 @@ namespace Collectives.ValuableSystems
         }
 
         private void OnEnable()
+        {
+            InitializeGFX();
+        }
+
+        private void InitializeGFX()
         {
             m_mainGFX.SetActive(true);
             m_mainGFXCollider.enabled = true;
