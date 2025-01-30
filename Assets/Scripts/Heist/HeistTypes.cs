@@ -8,6 +8,7 @@ namespace Collectives.HeistSystems
         public bool heistRequirementsMet;
         public int acquiredMoney;
         public int acquiredExperience;
+        public float elapsedTime;
         public readonly List<Valuable> collectedValuables;
 
         public DynamicHeistData(List<Valuable> _collectedValuables)
@@ -15,6 +16,7 @@ namespace Collectives.HeistSystems
             heistRequirementsMet = false;
             acquiredMoney = 0;
             acquiredExperience = 0;
+            elapsedTime = 0f;
             collectedValuables = new List<Valuable>();
         }
     }

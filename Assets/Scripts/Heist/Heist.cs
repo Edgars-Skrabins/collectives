@@ -6,7 +6,6 @@ using Collectives.Utilities;
 using Collectives.ValuableSystems;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 namespace Collectives.HeistSystems
 {
@@ -15,18 +14,12 @@ namespace Collectives.HeistSystems
         public UnityEvent OnHeistComplete;
         public UnityEvent OnHeistFail;
 
-        [SerializeField] private HeistTimer m_heistTimerCS;
         [SerializeField] private EGameScenes m_heistSuccessScene;
         [SerializeField] private EGameScenes m_heistFailScene;
         private EHeistTacticState m_currentTacticState;
 
         private HeistDataSO m_heistDataSO;
         private DynamicHeistData m_dynamicHeistData = new DynamicHeistData(new List<Valuable>());
-
-        public string GetFormattedHeistTime()
-        {
-            return m_heistTimerCS.GetFormattedElapsedTime();
-        }
 
         public HeistDataSO GetData()
         {
@@ -56,16 +49,6 @@ namespace Collectives.HeistSystems
             }
         }
 
-        public void LoadHeistSuccessScene()
-        {
-            DontDestroyOnLoad(gameObject);
-            SceneManager.LoadScene((int)m_heistSuccessScene);
-        }
-
-        public void LoadHeistFailScene()
-        {
-        }
-
         public void ExitHeistSuccessScene()
         {
             Destroy(gameObject);
@@ -89,7 +72,25 @@ namespace Collectives.HeistSystems
 
         private void FailHeist()
         {
-            Invoke(nameof(LoadHeistFailScene), 1f);
+            HeistTimer.I.StopTimer();
+            UpdateElapsedTime();
+            DontDestroyOnLoad(gameObject);
+            Invoke(nameof(SceneNavigation.GoToHeistFailScene), 1f);
+            OnHeistFail?.Invoke();
+        }
+
+        private void SucceedHeist()
+        {
+            HeistTimer.I.StopTimer();
+            UpdateElapsedTime();
+            DontDestroyOnLoad(gameObject);
+            SceneNavigation.GoToHeistSuccessScene();
+            OnHeistComplete?.Invoke();
+        }
+
+        private void UpdateElapsedTime()
+        {
+            m_dynamicHeistData.elapsedTime = HeistTimer.I.GetElapsedSeconds();
         }
 
         private void CheckHeistRequirements()
