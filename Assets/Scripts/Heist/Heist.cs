@@ -14,10 +14,11 @@ namespace Collectives.HeistSystems
         public UnityEvent OnHeistComplete;
         public UnityEvent OnHeistFail;
 
+        [SerializeField] private float m_delayBeforeHeistFailSceneLoad;
         [SerializeField] private EGameScenes m_heistSuccessScene;
         [SerializeField] private EGameScenes m_heistFailScene;
-        private EHeistTacticState m_currentTacticState;
 
+        private EHeistTacticState m_currentTacticState;
         private HeistDataSO m_heistDataSO;
         private DynamicHeistData m_dynamicHeistData = new DynamicHeistData(new List<Valuable>());
 
@@ -75,7 +76,7 @@ namespace Collectives.HeistSystems
             HeistTimer.I.StopTimer();
             UpdateElapsedTime();
             DontDestroyOnLoad(gameObject);
-            Invoke(nameof(SceneNavigation.GoToHeistFailScene), 1f);
+            Invoke(nameof(SceneNavigation.GoToHeistFailScene), m_delayBeforeHeistFailSceneLoad);
             OnHeistFail?.Invoke();
         }
 
