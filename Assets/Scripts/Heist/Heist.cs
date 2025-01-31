@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Collectives.DropOffZone;
 using Collectives.GlobalConstants;
 using Collectives.Utilities;
 using Collectives.ValuableSystems;
@@ -13,10 +15,9 @@ namespace Collectives.HeistSystems
     {
         public UnityEvent OnHeistComplete;
         public UnityEvent OnHeistFail;
+        public event Action<IValuable, DropOffZoneData> OnValuableCollected;
 
         [SerializeField] private HeistTimer m_heistTimerCS;
-        [SerializeField] private EGameScenes m_heistSuccessScene;
-        [SerializeField] private EGameScenes m_heistFailScene;
 
         private StaticHeistData m_staticHeistData;
         private DynamicHeistData m_dynamicHeistData = new DynamicHeistData(new List<Valuable>());
@@ -35,7 +36,10 @@ namespace Collectives.HeistSystems
                 name = "Test Heist",
                 description = "Test Heist Description",
                 amountOfValuablesRequired = 6,
-                mustHaveValuableIDs = new[] {55, 999},
+                mustHaveValuableIDs = new[]
+                {
+                    55, 999
+                }
             };
 
             m_staticHeistData = dataTakenFromTheUIMenuWhenPlayerClicksPlayOnThisHeist;
@@ -56,22 +60,24 @@ namespace Collectives.HeistSystems
             return m_dynamicHeistData;
         }
 
-        public void AddValuableToDropOff(Valuable _valuable)
+        public void AddValuableToCollected(Valuable _valuable, DropOffZoneData _dropOffZoneData)
         {
             m_dynamicHeistData.collectedValuables.Add(_valuable);
             m_dynamicHeistData.acquiredMoney += _valuable.GetValuableData().monetaryValue;
             m_dynamicHeistData.acquiredExperience += _valuable.GetValuableData().experienceValue;
 
+            OnValuableCollected?.Invoke(_valuable, _dropOffZoneData);
+
             if (!m_dynamicHeistData.heistRequirementsMet)
             {
-                CheckHeistRequirements();
+                UpdateHeistRequirementsStatus();
             }
         }
 
         public void LoadHeistSuccessScene()
         {
             DontDestroyOnLoad(gameObject);
-            SceneManager.LoadScene((int)m_heistSuccessScene);
+            SceneManager.LoadScene((int)EGameScenes.HEIST_SUCCESS);
         }
 
         public void LoadHeistFailScene()
@@ -83,7 +89,7 @@ namespace Collectives.HeistSystems
             Destroy(gameObject);
         }
 
-        private void CheckHeistRequirements()
+        private void UpdateHeistRequirementsStatus()
         {
             bool hasCollectedRequiredAmount = m_dynamicHeistData.collectedValuables.Count >= m_staticHeistData.amountOfValuablesRequired;
             bool hasCollectedMustHaveValuables = HasCollectedMustHaveValuables();
@@ -102,8 +108,7 @@ namespace Collectives.HeistSystems
             }
 
             return m_staticHeistData.mustHaveValuableIDs.All(
-                id =>
-                    m_dynamicHeistData.collectedValuables.Any(valuable => valuable.GetID() == id)
+                id => m_dynamicHeistData.collectedValuables.Any(valuable => valuable.GetID() == id)
             );
         }
     }
