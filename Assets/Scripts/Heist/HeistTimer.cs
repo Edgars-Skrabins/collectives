@@ -1,17 +1,33 @@
+using Collectives.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Collectives.HeistSystems
 {
-    public class HeistTimer : MonoBehaviour
+    public class HeistTimer : Singleton<HeistTimer>
     {
-        private float m_elapsedTime;
         public UnityEvent<string> OnTimerUpdated;
+        private float m_elapsedTime;
+        private bool m_isTimerPaused;
 
         private void Update()
         {
+            if (m_isTimerPaused)
+            {
+                return;
+            }
             CountElapsedTime();
             HandleTimerUpdatedEvent();
+        }
+
+        public void StopTimer()
+        {
+            m_isTimerPaused = true;
+        }
+
+        public int GetElapsedSeconds()
+        {
+            return (int)m_elapsedTime;
         }
 
         private void CountElapsedTime()
@@ -23,21 +39,8 @@ namespace Collectives.HeistSystems
         {
             if (m_elapsedTime % 1f < Time.deltaTime)
             {
-                OnTimerUpdated?.Invoke(GetFormattedElapsedTime());
+                OnTimerUpdated?.Invoke(m_elapsedTime.ToTimeFormat());
             }
-        }
-
-        public int GetElapsedSeconds()
-        {
-            return (int)m_elapsedTime;
-        }
-
-        public string GetFormattedElapsedTime()
-        {
-            int hours = (int)m_elapsedTime / 3600;
-            int minutes = (int)m_elapsedTime / 60 % 60;
-            int seconds = (int)m_elapsedTime % 60;
-            return $"{hours:00}:{minutes:00}:{seconds:00}";
         }
     }
 }

@@ -1,3 +1,5 @@
+using Collectives.ScriptableObjects;
+using Collectives.Utilities;
 using TMPro;
 using UnityEngine;
 
@@ -20,12 +22,12 @@ namespace Collectives.HeistSystems
 
         private void InitializeUIElements()
         {
-            StaticHeistData staticHeistData = Heist.I.GetStaticHeistData();
-            DynamicHeistData dynamicHeistData = Heist.I.GetDynamicHeistData();
+            HeistDataSO staticHeistData = Heist.I.GetData();
+            DynamicHeistData dynamicHeistData = Heist.I.GetDynamicData();
 
             m_heistName.text = staticHeistData.name;
             m_heistDescription.text = staticHeistData.description;
-            m_timeElapsed.text = Heist.I.GetFormattedHeistTime();
+            m_timeElapsed.text = dynamicHeistData.elapsedTime.ToTimeFormat();
             m_stolenValuableAmount.text = dynamicHeistData.collectedValuables.Count.ToString();
             m_moneyEarned.text = dynamicHeistData.acquiredMoney.ToString();
             m_earnedExperience.text = dynamicHeistData.acquiredExperience.ToString();

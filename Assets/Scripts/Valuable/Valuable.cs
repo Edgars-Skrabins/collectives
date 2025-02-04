@@ -1,3 +1,4 @@
+using Collectives.DropOffZone;
 using Collectives.PlayerSystems;
 using Collectives.ScriptableObjects;
 using UnityEngine;
@@ -42,9 +43,8 @@ namespace Collectives.ValuableSystems
             m_carryGFXCollider.enabled = true;
         }
 
-        public void Collect()
+        public void Collect(DropOffZoneData _dropOffZoneData)
         {
-
         }
 
         public ValuableDataSO GetValuableData()

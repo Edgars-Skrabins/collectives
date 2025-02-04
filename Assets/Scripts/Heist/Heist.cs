@@ -1,11 +1,13 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Collectives.DropOffZone;
 using Collectives.GlobalConstants;
+using Collectives.ScriptableObjects;
 using Collectives.Utilities;
 using Collectives.ValuableSystems;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 namespace Collectives.HeistSystems
 {
@@ -14,78 +16,91 @@ namespace Collectives.HeistSystems
         public UnityEvent OnHeistComplete;
         public UnityEvent OnHeistFail;
 
+        public event Action<IValuable, DropOffZoneData> OnValuableCollected;
+
         [SerializeField] private HeistTimer m_heistTimerCS;
+        [SerializeField] private float m_delayBeforeHeistFailSceneLoad;
         [SerializeField] private EGameScenes m_heistSuccessScene;
         [SerializeField] private EGameScenes m_heistFailScene;
 
-        private StaticHeistData m_staticHeistData;
+        private EHeistTacticState m_currentTacticState;
+        private HeistDataSO m_heistDataSO;
         private DynamicHeistData m_dynamicHeistData = new DynamicHeistData(new List<Valuable>());
 
-        protected override void Awake()
+        public HeistDataSO GetData()
         {
-            base.Awake();
-            InitializeStaticHeistData();
+            return m_heistDataSO;
         }
 
-        private void InitializeStaticHeistData()
-        {
-            // Get the settings that the player has selected for this heist.
-            StaticHeistData dataTakenFromTheUIMenuWhenPlayerClicksPlayOnThisHeist = new StaticHeistData
-            {
-                name = "Test Heist",
-                description = "Test Heist Description",
-                amountOfValuablesRequired = 6,
-                mustHaveValuableIDs = new[] {55, 999},
-            };
-
-            m_staticHeistData = dataTakenFromTheUIMenuWhenPlayerClicksPlayOnThisHeist;
-        }
-
-        public string GetFormattedHeistTime()
-        {
-            return m_heistTimerCS.GetFormattedElapsedTime();
-        }
-
-        public StaticHeistData GetStaticHeistData()
-        {
-            return m_staticHeistData;
-        }
-
-        public DynamicHeistData GetDynamicHeistData()
+        public DynamicHeistData GetDynamicData()
         {
             return m_dynamicHeistData;
         }
 
-        public void AddValuableToDropOff(Valuable _valuable)
+        public EHeistDifficulty GetDifficulty()
+        {
+            // TODO: Marking this for implementing difficulty selection in the future.
+            return EHeistDifficulty.EASY;
+        }
+
+        public void AddValuableToCollected(Valuable _valuable, DropOffZoneData _dropOffZoneData)
+
         {
             m_dynamicHeistData.collectedValuables.Add(_valuable);
             m_dynamicHeistData.acquiredMoney += _valuable.GetValuableData().monetaryValue;
             m_dynamicHeistData.acquiredExperience += _valuable.GetValuableData().experienceValue;
 
+            OnValuableCollected?.Invoke(_valuable, _dropOffZoneData);
+
             if (!m_dynamicHeistData.heistRequirementsMet)
             {
-                CheckHeistRequirements();
+                UpdateHeistRequirementsStatus();
             }
         }
 
-        public void LoadHeistSuccessScene()
+        public EHeistTacticState GetCurrentTacticState()
         {
+            return m_currentTacticState;
+        }
+
+        private void SetCurrentTacticState(EHeistTacticState _newTacticState)
+        {
+            m_currentTacticState = _newTacticState;
+            bool heistIsStealthOnly = m_heistDataSO.tacticRules == EHeistTacticRules.STEALTH_ONLY;
+
+            if (_newTacticState == EHeistTacticState.LOUD && heistIsStealthOnly)
+            {
+                FailHeist();
+            }
+        }
+
+        public void FailHeist()
+        {
+            HeistTimer.I.StopTimer();
+            UpdateElapsedTime();
             DontDestroyOnLoad(gameObject);
-            SceneManager.LoadScene((int)m_heistSuccessScene);
+            Invoke(nameof(SceneNavigation.GoToHeistFailScene), m_delayBeforeHeistFailSceneLoad);
+            OnHeistFail?.Invoke();
         }
 
-        public void LoadHeistFailScene()
+        private void SucceedHeist()
         {
+            HeistTimer.I.StopTimer();
+            UpdateElapsedTime();
+            DontDestroyOnLoad(gameObject);
+            SceneNavigation.GoToHeistSuccessScene();
+            OnHeistComplete?.Invoke();
         }
 
-        public void ExitHeistSuccessScene()
+        private void UpdateElapsedTime()
         {
-            Destroy(gameObject);
+            m_dynamicHeistData.elapsedTime = HeistTimer.I.GetElapsedSeconds();
         }
 
-        private void CheckHeistRequirements()
+        private void UpdateHeistRequirementsStatus()
+
         {
-            bool hasCollectedRequiredAmount = m_dynamicHeistData.collectedValuables.Count >= m_staticHeistData.amountOfValuablesRequired;
+            bool hasCollectedRequiredAmount = m_dynamicHeistData.collectedValuables.Count >= m_heistDataSO.amountOfValuablesRequired;
             bool hasCollectedMustHaveValuables = HasCollectedMustHaveValuables();
 
             if (hasCollectedRequiredAmount && hasCollectedMustHaveValuables)
@@ -96,14 +111,13 @@ namespace Collectives.HeistSystems
 
         private bool HasCollectedMustHaveValuables()
         {
-            if (m_staticHeistData.mustHaveValuableIDs.Length <= 0)
+            if (m_heistDataSO.mustHaveValuableIDs.Length <= 0)
             {
                 return true;
             }
 
-            return m_staticHeistData.mustHaveValuableIDs.All(
-                id =>
-                    m_dynamicHeistData.collectedValuables.Any(valuable => valuable.GetID() == id)
+            return m_heistDataSO.mustHaveValuableIDs.All(
+                id => m_dynamicHeistData.collectedValuables.Any(valuable => valuable.GetID() == id)
             );
         }
     }
