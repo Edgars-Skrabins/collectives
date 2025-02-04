@@ -9,5 +9,15 @@ namespace Collectives.Utilities
         {
             SceneManager.LoadScene((int)_scene);
         }
+
+        public static void GoToHeistSuccessScene()
+        {
+            SceneManager.LoadScene((int)EGameScenes.HEIST_SUCCESS);
+        }
+
+        public static void GoToHeistFailScene()
+        {
+            SceneManager.LoadScene((int)EGameScenes.HEIST_FAIL);
+        }
     }
 }
