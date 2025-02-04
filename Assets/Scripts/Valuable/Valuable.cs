@@ -1,4 +1,5 @@
 using Collectives.DropOffZone;
+using Collectives.HeistSystems;
 using Collectives.PlayerSystems;
 using Collectives.ScriptableObjects;
 using UnityEngine;
@@ -45,6 +46,7 @@ namespace Collectives.ValuableSystems
 
         public void Collect(DropOffZoneData _dropOffZoneData)
         {
+            Heist.I.AddValuableToCollected(this, _dropOffZoneData);
         }
 
         public ValuableDataSO GetValuableData()
