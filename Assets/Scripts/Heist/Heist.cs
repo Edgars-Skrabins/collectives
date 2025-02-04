@@ -43,7 +43,7 @@ namespace Collectives.HeistSystems
             return EHeistDifficulty.EASY;
         }
 
-        public void AddValuableToCollected(Valuable _valuable, DropOffZoneData _dropOffZoneData)
+        public void AddValuableToCollected(IValuable _valuable, DropOffZoneData _dropOffZoneData)
 
         {
             m_dynamicHeistData.collectedValuables.Add(_valuable);

@@ -9,7 +9,7 @@ namespace Collectives.HeistSystems
         public int acquiredMoney;
         public int acquiredExperience;
         public float elapsedTime;
-        public readonly List<Valuable> collectedValuables;
+        public readonly List<IValuable> collectedValuables;
 
         public DynamicHeistData(List<Valuable> _collectedValuables)
         {
@@ -17,7 +17,7 @@ namespace Collectives.HeistSystems
             acquiredMoney = 0;
             acquiredExperience = 0;
             elapsedTime = 0f;
-            collectedValuables = new List<Valuable>();
+            collectedValuables = new List<IValuable>();
         }
     }
 }
