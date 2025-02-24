@@ -15,6 +15,7 @@ namespace Collectives.ObjectSystems
 
         private void Start()
         {
+            gameObject.SetActive(false);
             EnableObjectIfPassesSpawnCheck();
         }
 
