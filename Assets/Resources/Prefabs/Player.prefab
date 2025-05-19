@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 5410549222728190299}
   - component: {fileID: 8518036988292713185}
   - component: {fileID: 6643292206958091740}
-  - component: {fileID: 2359537676920114348}
+  - component: {fileID: 6961870480466226009}
   m_Layer: 0
   m_Name: POV Camera
   m_TagString: Untagged
@@ -95,7 +95,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4045878468741005366}
   m_Father: {fileID: 9136243426520105513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8518036988292713185
@@ -157,7 +158,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 805637518146325601}
   m_Enabled: 1
---- !u!114 &2359537676920114348
+--- !u!114 &6961870480466226009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,6 +202,37 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &948027509355970775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4045878468741005366}
+  m_Layer: 0
+  m_Name: Carry Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4045878468741005366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948027509355970775}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.4, y: -0.25, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5410549222728190299}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1905276090272246699
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +253,7 @@ GameObject:
   - component: {fileID: 8663569513670091046}
   - component: {fileID: 1781178817130710624}
   - component: {fileID: 6154232509162622662}
-  - component: {fileID: 733394655133876842}
+  - component: {fileID: 3356422797690451818}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -443,7 +475,7 @@ MonoBehaviour:
   m_movementSystem: {fileID: 785025905756199808}
   m_staminaSystem: {fileID: 6706709828551441976}
   m_groundCheck: {fileID: 8131910719467453364}
-  m_carry: {fileID: 733394655133876842}
+  m_carry: {fileID: 0}
   OnStartSprint:
     m_PersistentCalls:
       m_Calls: []
@@ -463,7 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_mainCamera: {fileID: 8518036988292713185}
---- !u!114 &733394655133876842
+--- !u!114 &3356422797690451818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -476,8 +508,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 1781178817130710624}
-  m_carryTransform: {fileID: 5420945896198507694}
-  m_throwForce: 10
+  m_carryTransform: {fileID: 4045878468741005366}
+  m_throwForce: 0
 --- !u!1 &2780278906917928161
 GameObject:
   m_ObjectHideFlags: 0
