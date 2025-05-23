@@ -9,66 +9,77 @@ namespace Collectives.PlayerSystems
     {
         [SerializeField] private Player m_player;
         [SerializeField] private Transform m_carryTransform;
-        [SerializeField] private float m_throwForce;
+        [SerializeField] private float m_maxWeightCapacity;
 
+        private float m_currentTotalWeight;
         private Valuable m_currentValuable;
+        private List<Valuable> m_pickedValuables;
 
-        private void Update()
+        private void Awake()
         {
-            if (Input.GetKeyDown(KeyCode.G) && m_currentValuable != null)
-            {
-                ThrowValuable();
-            }
-        }
-
-        private void ThrowValuable()
-        {
-            Rigidbody valuableBody = m_currentValuable.GetComponent<Rigidbody>();
-
-            Vector3 throwDirection = m_player.GetCameraSystem().GetMainCamera().transform.forward;
-            Vector3 throwVector = throwDirection * m_throwForce;
-
-            valuableBody.isKinematic = false;
-            valuableBody.AddForce(throwVector, ForceMode.Impulse);
-            valuableBody.transform.parent = null;
-            valuableBody.useGravity = true;
-            SetCurrentValuable(null);
+            m_pickedValuables = new List<Valuable>();
         }
 
         public void SetCurrentValuable(Valuable _newValuable)
         {
-            if (_newValuable != null)
+            if (m_currentTotalWeight + (float)_newValuable.GetWeightClass() <= m_maxWeightCapacity)
             {
                 m_currentValuable = _newValuable;
                 PickUp();
             }
-            else
+        }
+
+        public void DropAll()
+        {
+            for (int i = 0; i < m_pickedValuables.Count; i++)
             {
+                Valuable valuable = m_pickedValuables[i];
+                m_currentValuable = valuable;
                 Drop();
             }
+            m_player.ResetSpeedMultiplier();
         }
 
         private void Drop()
         {
+            m_pickedValuables.Remove(m_currentValuable);
+            m_currentValuable.gameObject.SetActive(true);
+            m_currentValuable.TryGetComponent(out Rigidbody rb);
             m_currentValuable.gameObject.layer = 0; // Default Layer
             m_currentValuable.transform.SetParent(null);
+            rb.isKinematic = false;
             m_currentValuable = null;
-            m_player.ResetSpeedMultiplier();
         }
 
         private void PickUp()
         {
-            m_currentValuable.GetComponent<Rigidbody>().isKinematic = true;
+            m_pickedValuables.Add(m_currentValuable);
+            m_currentValuable.TryGetComponent(out Rigidbody rb);
+            rb.isKinematic = true;
             m_currentValuable.gameObject.layer = gameObject.layer;
             m_currentValuable.transform.SetParent(m_carryTransform);
             m_currentValuable.transform.localPosition = Vector3.zero;
             m_currentValuable.transform.localEulerAngles = Vector3.zero;
-            m_player.SetSpeedMultiplier(GetWeightToSpeedMultiplier(m_currentValuable.GetWeightClass()));
+            m_currentValuable.gameObject.SetActive(false);
+            CalculateWeight();
         }
 
-        private float GetWeightToSpeedMultiplier(EWeightClasses _weightClass)
+        private void CalculateWeight()
         {
-            return 1f - (float)_weightClass / 100; // Based on description given in weight class.
+            m_currentTotalWeight = 0f;
+            foreach (Valuable valuable in m_pickedValuables)
+            {
+                m_currentTotalWeight += (float)valuable.GetWeightClass();
+            }
+            m_player.SetSpeedMultiplier(1 - m_currentTotalWeight / m_maxWeightCapacity);
+        }
+
+        private void OnTriggerEnter(Collider _other)
+        {
+            if (_other.CompareTag("DropOffZone"))
+            {
+                DropAll();
+            }
         }
     }
 }

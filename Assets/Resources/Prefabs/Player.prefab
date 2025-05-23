@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 8663569513670091046}
   - component: {fileID: 1781178817130710624}
   - component: {fileID: 6154232509162622662}
+  - component: {fileID: 3603289032836582785}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -262,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_groundCheckTF: {fileID: 8080864018565794910}
-  m_groundCheckRadius: 0.1
+  m_groundCheckRadius: 0.15
   m_groundLayer:
     serializedVersion: 2
     m_Bits: 55
@@ -278,10 +279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7112b88c8ad4625bffa72bac342e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_controller: {fileID: 6504985449567196583}
-  m_staminaSystem: {fileID: 6706709828551441976}
-  m_groundCheck: {fileID: 8131910719467453364}
+  m_player: {fileID: 1781178817130710624}
   m_walkSpeed: 4
+  m_defaultMoveSpeedMultiplier: 1
   m_sprintSpeedMultiplier: 2
 --- !u!114 &3687843617767617776
 MonoBehaviour:
@@ -309,8 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce66c24f43bc4c468d66223dd7c0b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_groundCheck: {fileID: 0}
-  m_controller: {fileID: 6504985449567196583}
+  m_player: {fileID: 1781178817130710624}
   m_jumpHeight: 1
   m_gravity: 10
 --- !u!114 &8634116946094937416
@@ -395,6 +394,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_cameraSystem: {fileID: 6154232509162622662}
+  m_controller: {fileID: 6504985449567196583}
+  m_movementSystem: {fileID: 785025905756199808}
+  m_staminaSystem: {fileID: 6706709828551441976}
+  m_groundCheck: {fileID: 8131910719467453364}
+  m_carry: {fileID: 3603289032836582785}
+  OnStartSprint:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStopSprint:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6154232509162622662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,6 +418,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_mainCamera: {fileID: 8518036988292713185}
+--- !u!114 &3603289032836582785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905276090272246699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22a0839ea0bc447eb9fe80d986734b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_player: {fileID: 1781178817130710624}
+  m_carryTransform: {fileID: 8080864018565794910}
+  m_maxWeightCapacity: 100
 --- !u!1 &2780278906917928161
 GameObject:
   m_ObjectHideFlags: 0
