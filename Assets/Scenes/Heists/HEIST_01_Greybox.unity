@@ -18790,7 +18790,7 @@ MonoBehaviour:
   refractionColor: {r: 0.017399436, g: 0.16037738, b: 0.16037738, a: 1}
   maxRefractionDistance: 0.5
   absorptionDistance: 1.5
-  scatteringColor: {r: 0.13243146, g: 0.3018868, b: 0.3018868, a: 1}
+  scatteringColor: {r: 0, g: 0.764151, b: 0.764151, a: 1}
   ambientScattering: 0.2
   heightScattering: 0.2
   displacementScattering: 0.1
