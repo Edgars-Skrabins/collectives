@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,6 +16,7 @@ namespace Collectives.PlayerSystems
 
         [Header("Events")]
         public UnityEvent OnStartSprint;
+
         public UnityEvent OnStopSprint;
 
         public CharacterController GetCharacterController()
