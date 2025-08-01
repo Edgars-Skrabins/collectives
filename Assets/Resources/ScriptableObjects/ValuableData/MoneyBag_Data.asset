@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MoneyBag_Data
   m_EditorClassIdentifier: 
   valuableName: Money bag
-  weightClass: 0
+  weightClass: 20
   monetaryValue: 50
   experienceValue: 350

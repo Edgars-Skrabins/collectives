@@ -1,4 +1,5 @@
 using Collectives.HelperComponents;
+using Collectives.PlayerSystems;
 using Collectives.ValuableSystems;
 using UnityEngine;
 
@@ -17,6 +18,10 @@ namespace Collectives.DropOffZone
 
         private void OnItemCollisionInDropOff(Collider _collider)
         {
+            if (_collider.TryGetComponent(out PlayerCarry player))
+            {
+                player.DropAll();
+            }
             if (_collider.TryGetComponent(out IValuable valuable))
             {
                 HandleValuableCollision(valuable);

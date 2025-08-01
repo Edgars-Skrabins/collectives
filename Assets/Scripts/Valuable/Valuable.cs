@@ -12,9 +12,9 @@ namespace Collectives.ValuableSystems
         [Space]
         [SerializeField] private GameObject m_mainGFX;
         [SerializeField] private Collider m_mainGFXCollider;
-        [Space]
-        [SerializeField] private GameObject m_carryGFX;
-        [SerializeField] private Collider m_carryGFXCollider;
+        //[Space]
+        //[SerializeField] private GameObject m_carryGFX;
+        //[SerializeField] private Collider m_carryGFXCollider;
 
         public EWeightClasses GetWeightClass()
         {
@@ -30,8 +30,8 @@ namespace Collectives.ValuableSystems
         {
             m_mainGFX.SetActive(true);
             m_mainGFXCollider.enabled = true;
-            m_carryGFX.SetActive(false);
-            m_carryGFXCollider.enabled = false;
+            //m_carryGFX.SetActive(false);
+            //m_carryGFXCollider.enabled = false;
         }
 
         public override void AttemptInteract(Player _interactor)
@@ -40,8 +40,6 @@ namespace Collectives.ValuableSystems
             _interactor.GetCarrySystem().SetCurrentValuable(this);
             m_mainGFX.SetActive(false);
             m_mainGFXCollider.enabled = false;
-            m_carryGFX.SetActive(true);
-            m_carryGFXCollider.enabled = true;
         }
 
         public void Collect(DropOffZoneData _dropOffZoneData)
