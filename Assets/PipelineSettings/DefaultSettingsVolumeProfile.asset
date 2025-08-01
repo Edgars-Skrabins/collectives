@@ -208,10 +208,10 @@ MonoBehaviour:
     m_Value: {x: 0, y: 0}
   bottomAltitude:
     m_OverrideState: 1
-    m_Value: 1200
+    m_Value: 1000
   altitudeRange:
     m_OverrideState: 1
-    m_Value: 2000
+    m_Value: 5000
   fadeInMode:
     m_OverrideState: 1
     m_Value: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
     m_Value: 0
   m_CloudPreset:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 4
   cumulusMap:
     m_OverrideState: 1
     m_Value: {fileID: 0}
@@ -287,7 +287,16 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.15
+        time: 0.037
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.6
         value: 1
         inSlope: 0
         outSlope: 0
@@ -297,7 +306,7 @@ MonoBehaviour:
         outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 0.1
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -322,8 +331,35 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.1
-        value: 0.9
+        time: 0.05
+        value: 0.8
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.2438
+        value: 0.9498
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.93
+        value: 0.9268
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -357,7 +393,7 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.25
+        time: 0.1
         value: 0.4
         inSlope: 0
         outSlope: 0
@@ -388,10 +424,10 @@ MonoBehaviour:
     m_Value: 0.5
   densityMultiplier:
     m_OverrideState: 1
-    m_Value: 0.4
+    m_Value: 1
   shapeFactor:
     m_OverrideState: 1
-    m_Value: 0.9
+    m_Value: 0.85
   shapeScale:
     m_OverrideState: 1
     m_Value: 5
@@ -400,7 +436,7 @@ MonoBehaviour:
     m_Value: {x: 0, y: 0, z: 0}
   erosionFactor:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0.75
   erosionScale:
     m_OverrideState: 1
     m_Value: 107
@@ -591,7 +627,7 @@ MonoBehaviour:
     m_Value: 1024
   shadowMultiplier:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   shadowTint:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
@@ -607,16 +643,16 @@ MonoBehaviour:
       m_Value: {fileID: 2800000, guid: 57a33fc2476a01644865bfde5f06e2f4, type: 3}
     opacityR:
       m_OverrideState: 1
-      m_Value: 1
+      m_Value: 0.08
     opacityG:
       m_OverrideState: 1
       m_Value: 0
     opacityB:
       m_OverrideState: 1
-      m_Value: 0
+      m_Value: 0.068
     opacityA:
       m_OverrideState: 1
-      m_Value: 0
+      m_Value: 0.052
     altitude:
       m_OverrideState: 1
       m_Value: 2000
@@ -628,23 +664,23 @@ MonoBehaviour:
       m_Value: {r: 1, g: 1, b: 1, a: 1}
     exposure:
       m_OverrideState: 1
-      m_Value: 0
+      m_Value: 1.6
     distortionMode:
       m_OverrideState: 1
-      m_Value: 0
+      m_Value: 1
     scrollOrientation:
       m_OverrideState: 1
       m_Value:
         mode: 1
         customValue: 0
-        additiveValue: 0
+        additiveValue: 5000
         multiplyValue: 1
     scrollSpeed:
       m_OverrideState: 1
       m_Value:
         mode: 1
-        customValue: 100
-        additiveValue: 0
+        customValue: 0
+        additiveValue: 500
         multiplyValue: 1
     flowmap:
       m_OverrideState: 1
@@ -654,10 +690,10 @@ MonoBehaviour:
       m_Value: 1
     steps:
       m_OverrideState: 1
-      m_Value: 6
+      m_Value: 2
     thickness:
       m_OverrideState: 1
-      m_Value: 0.5
+      m_Value: 0.15
     ambientProbeDimmer:
       m_OverrideState: 1
       m_Value: 1
@@ -1573,16 +1609,16 @@ MonoBehaviour:
     m_Value: 1
   cloudType:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   skyAmbientMode:
     m_OverrideState: 1
     m_Value: 1
   windOrientation:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 98
   windSpeed:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 100
   fogType:
     m_OverrideState: 1
     m_Value: 0

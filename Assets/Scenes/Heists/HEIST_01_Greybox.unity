@@ -5021,9 +5021,9 @@ MonoBehaviour:
   timeMultiplier: 1
   scriptInteractions: 1
   cpuEvaluateRipples: 0
-  customMaterial: {fileID: 0}
-  startSmoothness: 0.95
-  endSmoothness: 0.85
+  customMaterial: {fileID: 2100000, guid: 4c6788e47027e2a46a37c81dc6742bd1, type: 2}
+  startSmoothness: 0.43608728
+  endSmoothness: 0.3360875
   smoothnessFadeStart: 100
   smoothnessFadeDistance: 500
   tessellation: 1
@@ -5079,13 +5079,13 @@ MonoBehaviour:
   deformationRes: 512
   deformationAreaSize: {x: 200, y: 200}
   deformationAreaOffset: {x: 0, y: 0}
-  foam: 1
+  foam: 0
   foamResolution: 512
   foamAreaSize: {x: 200, y: 200}
   foamAreaOffset: {x: 0, y: 0}
   foamPersistenceMultiplier: 0.5
   foamColor: {r: 1, g: 1, b: 1, a: 1}
-  foamTextureTiling: 0.15
+  foamTextureTiling: 2
   foamSmoothness: 1
   simulationFoam: 1
   simulationFoamAmount: 0.2
@@ -5135,14 +5135,14 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   repetitionSize: 500
-  largeOrientationValue: 90
+  largeOrientationValue: 88
   largeWindSpeed: 25
   largeChaos: 0.5
   largeBand0Multiplier: 0.5
   largeBand0FadeMode: 1
   largeBand0FadeStart: 1500
   largeBand0FadeDistance: 3000
-  largeBand1Multiplier: 0.75
+  largeBand1Multiplier: 1
   largeBand1FadeMode: 1
   largeBand1FadeStart: 300
   largeBand1FadeDistance: 800
