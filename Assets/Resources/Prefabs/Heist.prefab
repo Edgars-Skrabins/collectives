@@ -45,4 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_dontDestroyOnLoad: 0
-  m_endGameScene: 1
+  OnHeistComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeistFail:
+    m_PersistentCalls:
+      m_Calls: []
+  m_heistTimerCS: {fileID: 0}
+  m_delayBeforeHeistFailSceneLoad: 3
+  m_heistSuccessScene: 1
+  m_heistFailScene: 2
