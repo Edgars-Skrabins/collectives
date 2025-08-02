@@ -115,7 +115,8 @@ namespace Collectives.HeistSystems
                 return true;
             }
 
-            return m_heistDataSO.mustHaveValuableIDs.All(id => m_dynamicHeistData.collectedValuables.Any(valuable => valuable.GetID() == id)
+            return m_heistDataSO.mustHaveValuableIDs.All(id =>
+                m_dynamicHeistData.collectedValuables.Any(valuable => valuable.GetID() == id)
             );
         }
     }

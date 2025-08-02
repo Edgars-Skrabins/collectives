@@ -1,11 +1,13 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Collectives.AICameraSystems
 {
     public class CameraTurnState : CameraLookBehaviourState
     {
-        public CameraTurnState(Transform objectToRotate) : base(objectToRotate) { }
+        public CameraTurnState(Transform objectToRotate) : base(objectToRotate)
+        {
+        }
 
         public override IEnumerator Execute(LookAction action)
         {
