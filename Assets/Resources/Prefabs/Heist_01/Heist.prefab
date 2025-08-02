@@ -26,15 +26,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3386977454737144784, guid: 065386630c48f4951b34a514e572c689, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3386977454737144784, guid: 065386630c48f4951b34a514e572c689, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3386977454737144784, guid: 065386630c48f4951b34a514e572c689, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3386977454737144784, guid: 065386630c48f4951b34a514e572c689, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -52,8 +52,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heist
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6644377013300394946, guid: 065386630c48f4951b34a514e572c689, type: 3}
+      propertyPath: m_heistTimerCS
+      value: 
+      objectReference: {fileID: 6476084649954752835}
+    m_RemovedComponents:
+    - {fileID: 4321301470351223056, guid: 065386630c48f4951b34a514e572c689, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4817083366478603609, guid: 065386630c48f4951b34a514e572c689, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6476084649954752835}
   m_SourcePrefab: {fileID: 100100000, guid: 065386630c48f4951b34a514e572c689, type: 3}
+--- !u!1 &2315738452456801928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4817083366478603609, guid: 065386630c48f4951b34a514e572c689, type: 3}
+  m_PrefabInstance: {fileID: 7132171386927244241}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6476084649954752835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2315738452456801928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544036f00f7d4470d9046297ed5432e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dontDestroyOnLoad: 0
+  OnTimerUpdated:
+    m_PersistentCalls:
+      m_Calls: []
