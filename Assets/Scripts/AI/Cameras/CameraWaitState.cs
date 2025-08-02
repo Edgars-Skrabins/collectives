@@ -1,11 +1,13 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Collectives.AICameraSystems
 {
     public class CameraWaitState : CameraLookBehaviourState
     {
-        public CameraWaitState(Transform objectToRotate) : base(objectToRotate) { }
+        public CameraWaitState(Transform objectToRotate) : base(objectToRotate)
+        {
+        }
 
         public override IEnumerator Execute(LookAction action)
         {

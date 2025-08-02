@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3386977454737144784}
   - component: {fileID: 6644377013300394946}
+  - component: {fileID: 4321301470351223056}
   m_Layer: 0
   m_Name: Heist
   m_TagString: Untagged
@@ -45,4 +46,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_dontDestroyOnLoad: 0
-  m_endGameScene: 1
+  OnHeistComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeistFail:
+    m_PersistentCalls:
+      m_Calls: []
+  m_heistTimerCS: {fileID: 4321301470351223056}
+  m_delayBeforeHeistFailSceneLoad: 3
+  m_heistSuccessScene: 1
+  m_heistFailScene: 2
+--- !u!114 &4321301470351223056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4817083366478603609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544036f00f7d4470d9046297ed5432e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dontDestroyOnLoad: 0
+  OnTimerUpdated:
+    m_PersistentCalls:
+      m_Calls: []

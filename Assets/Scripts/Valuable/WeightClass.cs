@@ -6,6 +6,6 @@ namespace Collectives.ValuableSystems
     {
         LIGHT = 0,
         MEDIUM = 20,
-        HEAVY = 40,
+        HEAVY = 40
     }
 }
