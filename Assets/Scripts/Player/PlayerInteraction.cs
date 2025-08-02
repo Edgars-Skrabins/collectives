@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Collectives.Utilities;
+using UnityEngine;
 
 namespace Collectives.PlayerSystems
 {
@@ -41,7 +39,6 @@ namespace Collectives.PlayerSystems
             if (hits[0].collider == null)
             {
                 HandleInteractableNotInRange();
-                return;
             }
             else
             {
@@ -80,7 +77,13 @@ namespace Collectives.PlayerSystems
         {
             if (!m_playerCamera) return;
 
-            GizmosUtility.DrawRay(m_playerCamera.transform.position, m_playerCamera.transform.forward, m_interactionDistance, gameObject.layer, Color.green);
+            GizmosUtility.DrawRay(
+                m_playerCamera.transform.position,
+                m_playerCamera.transform.forward,
+                m_interactionDistance,
+                gameObject.layer,
+                Color.green
+            );
         }
     }
 #endif
