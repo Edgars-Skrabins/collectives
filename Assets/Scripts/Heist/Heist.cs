@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Collectives.DropOffZone;
 using Collectives.GlobalConstants;
-using Collectives.ScriptableObjects;
 using Collectives.Utilities;
 using Collectives.ValuableSystems;
 using UnityEngine;
@@ -11,7 +9,7 @@ using UnityEngine.Events;
 
 namespace Collectives.HeistSystems
 {
-    public class Heist : Singleton<Heist>
+    public partial class Heist : Singleton<Heist>
     {
         public UnityEvent OnHeistComplete;
         public UnityEvent OnHeistFail;
@@ -23,28 +21,18 @@ namespace Collectives.HeistSystems
         [SerializeField] private EGameScenes m_heistSuccessScene;
         [SerializeField] private EGameScenes m_heistFailScene;
 
-        private EHeistTacticState m_currentTacticState;
-        private HeistDataSO m_heistDataSO;
-        private DynamicHeistData m_dynamicHeistData = new DynamicHeistData(new List<Valuable>());
-
-        public HeistDataSO GetData()
+        protected override void Awake()
         {
-            return m_heistDataSO;
+            base.Awake();
+            LoadPersistentData();
         }
 
-        public DynamicHeistData GetDynamicData()
+        private void LoadPersistentData()
         {
-            return m_dynamicHeistData;
-        }
-
-        public EHeistDifficulty GetDifficulty()
-        {
-            // TODO: Marking this for implementing difficulty selection in the future.
-            return EHeistDifficulty.EASY;
+            m_heistDifficulty = PersistentDataManager.m_CurrentSelectedDifficulty;
         }
 
         public void AddValuableToCollected(IValuable _valuable, DropOffZoneData _dropOffZoneData)
-
         {
             m_dynamicHeistData.collectedValuables.Add(_valuable);
             m_dynamicHeistData.acquiredMoney += _valuable.GetValuableData().monetaryValue;
@@ -56,11 +44,6 @@ namespace Collectives.HeistSystems
             {
                 UpdateHeistRequirementsStatus();
             }
-        }
-
-        public EHeistTacticState GetCurrentTacticState()
-        {
-            return m_currentTacticState;
         }
 
         private void SetCurrentTacticState(EHeistTacticState _newTacticState)

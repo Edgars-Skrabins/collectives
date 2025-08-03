@@ -22,7 +22,7 @@ namespace Collectives.HeistSystems
 
         private void InitializeUIElements()
         {
-            HeistDataSO staticHeistData = Heist.I.GetData();
+            HeistDataSO staticHeistData = Heist.I.GetHeistData();
             DynamicHeistData dynamicHeistData = Heist.I.GetDynamicData();
 
             m_heistName.text = staticHeistData.name;
