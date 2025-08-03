@@ -18,6 +18,7 @@ namespace Collectives.HeistSystems
 
         [SerializeField] private HeistTimer m_heistTimerCS;
         [SerializeField] private float m_delayBeforeHeistFailSceneLoad;
+        [SerializeField] private float m_delayBeforeHeistSucceedsSceneLoad;
         [SerializeField] private EGameScenes m_heistSuccessScene;
         [SerializeField] private EGameScenes m_heistFailScene;
 
@@ -71,7 +72,7 @@ namespace Collectives.HeistSystems
             HeistTimer.I.StopTimer();
             UpdateElapsedTime();
             DontDestroyOnLoad(gameObject);
-            SceneNavigation.GoToHeistSuccessScene();
+            Invoke(nameof(SceneNavigation.GoToHeistSuccessScene), m_delayBeforeHeistSucceedsSceneLoad);
             OnHeistComplete?.Invoke();
         }
 
