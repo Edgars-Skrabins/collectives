@@ -57,7 +57,7 @@ namespace Collectives.HeistSystems
             }
         }
 
-        public void FailHeist()
+        private void FailHeist()
         {
             HeistTimer.I.StopTimer();
             UpdateElapsedTime();
