@@ -1,4 +1,4 @@
 # About
 
 ## Unity Version 
-- Unity 2023.2.20f1
+- Unity 6.0 (6000.0.54f1)
