@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Collectives.DropOffZone;
 using Collectives.GlobalConstants;
+using Collectives.ScriptableObjects;
 using Collectives.Utilities;
 using Collectives.ValuableSystems;
 using UnityEngine;
@@ -11,10 +12,10 @@ namespace Collectives.HeistSystems
 {
     public partial class Heist : Singleton<Heist>
     {
+        private readonly DynamicHeistData m_dynamicHeistData = new DynamicHeistData();
+        public event Action<IValuable, DropOffZoneData> OnValuableCollected;
         public UnityEvent OnHeistComplete;
         public UnityEvent OnHeistFail;
-
-        public event Action<IValuable, DropOffZoneData> OnValuableCollected;
 
         [SerializeField] private HeistTimer m_heistTimerCS;
         [SerializeField] private float m_delayBeforeHeistFailSceneLoad;
@@ -22,15 +23,29 @@ namespace Collectives.HeistSystems
         [SerializeField] private EGameScenes m_heistSuccessScene;
         [SerializeField] private EGameScenes m_heistFailScene;
 
+        private HeistDataSO m_heistDataSO;
+        private EHeistDifficulty m_heistDifficulty;
+
         protected override void Awake()
         {
             base.Awake();
             LoadPersistentData();
+            InitializeDynamicHeistDataProperties();
         }
 
         private void LoadPersistentData()
         {
             m_heistDifficulty = PersistentDataManager.m_CurrentSelectedDifficulty;
+        }
+
+        private void InitializeDynamicHeistDataProperties()
+        {
+            m_dynamicHeistData.currentTacticState = GetStartingTacticState();
+        }
+
+        private EHeistTacticState GetStartingTacticState()
+        {
+            return m_heistDataSO.tacticRules == EHeistTacticRules.LOUD_ONLY ? EHeistTacticState.LOUD : EHeistTacticState.STEALTH;
         }
 
         public void AddValuableToCollected(IValuable _valuable, DropOffZoneData _dropOffZoneData)
@@ -49,7 +64,7 @@ namespace Collectives.HeistSystems
 
         private void SetCurrentTacticState(EHeistTacticState _newTacticState)
         {
-            m_currentTacticState = _newTacticState;
+            m_dynamicHeistData.currentTacticState = _newTacticState;
             bool heistIsStealthOnly = m_heistDataSO.tacticRules == EHeistTacticRules.STEALTH_ONLY;
 
             if (_newTacticState == EHeistTacticState.LOUD && heistIsStealthOnly)
@@ -83,7 +98,8 @@ namespace Collectives.HeistSystems
 
         private void UpdateHeistRequirementsStatus()
         {
-            bool hasCollectedRequiredAmount = m_dynamicHeistData.collectedValuables.Count >= m_heistDataSO.amountOfValuablesRequired;
+            bool hasCollectedRequiredAmount = m_dynamicHeistData.collectedValuables.Count >=
+                                              m_heistDataSO.moneyRequiredPerDifficulty[(int)m_heistDifficulty];
             bool hasCollectedMustHaveValuables = HasCollectedMustHaveValuables();
 
             if (hasCollectedRequiredAmount && hasCollectedMustHaveValuables)

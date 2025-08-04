@@ -1,23 +1,16 @@
 using System.Collections.Generic;
+using Collectives.GlobalConstants;
 using Collectives.ValuableSystems;
 
 namespace Collectives.HeistSystems
 {
-    public struct DynamicHeistData
+    public class DynamicHeistData
     {
-        public bool heistRequirementsMet;
-        public int acquiredMoney;
-        public int acquiredExperience;
-        public float elapsedTime;
-        public readonly List<IValuable> collectedValuables;
-
-        public DynamicHeistData(List<Valuable> _collectedValuables)
-        {
-            heistRequirementsMet = false;
-            acquiredMoney = 0;
-            acquiredExperience = 0;
-            elapsedTime = 0f;
-            collectedValuables = new List<IValuable>();
-        }
+        public bool heistRequirementsMet = false;
+        public int acquiredMoney = 0;
+        public int acquiredExperience = 0;
+        public float elapsedTime = 0f;
+        public readonly List<IValuable> collectedValuables = new();
+        public EHeistTacticState currentTacticState;
     }
 }
