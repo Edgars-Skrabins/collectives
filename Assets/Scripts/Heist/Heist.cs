@@ -100,9 +100,10 @@ namespace Collectives.HeistSystems
 
         private void UpdateHeistRequirementsStatus()
         {
-            bool hasCollectedRequiredAmount = m_dynamicHeistData.collectedValuables.Count >= m_heistDataSO.mustHaveValuableIDs.Length;
-
-            if (hasCollectedRequiredAmount && HasCollectedMustHaveValuables())
+            // TODO: This has potential to be split into 2 public functions HasCollectedRequiredMoney and HasCollectedMustHaveValuables
+            // for more precise control. At the time of writing this was unecessary 
+            bool hasCollectedRequiredMoney = m_dynamicHeistData.collectedValuables.Count >= m_heistDataSO.mustHaveValuableIDs.Length;
+            if (hasCollectedRequiredMoney && HasCollectedMustHaveValuables())
             {
                 m_dynamicHeistData.hasHeistRequirementsMet = true;
             }
