@@ -14,5 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heistName: 
   description: 
+  moneyRequiredPerDifficulty:
+  - difficulty: 0
+    moneyRequired: 0
+  - difficulty: 1
+    moneyRequired: 0
+  - difficulty: 2
+    moneyRequired: 0
+  - difficulty: 3
+    moneyRequired: 0
   tacticRules: 0
-  mustHaveValuableIDs: 
+  mustHaveValuableIDs: 000000000000000000000000
