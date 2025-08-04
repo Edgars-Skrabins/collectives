@@ -41,6 +41,8 @@ namespace Collectives.HeistSystems
         private void InitializeDynamicHeistDataProperties()
         {
             m_dynamicHeistData.currentTacticState = GetStartingTacticState();
+            m_dynamicHeistData.requiredMoney = m_heistDataSO.moneyRequiredPerDifficulty
+                .First(obj => obj.difficulty == m_heistDifficulty).moneyRequired;
         }
 
         private EHeistTacticState GetStartingTacticState()
@@ -56,7 +58,7 @@ namespace Collectives.HeistSystems
 
             OnValuableCollected?.Invoke(_valuable, _dropOffZoneData);
 
-            if (!m_dynamicHeistData.heistRequirementsMet)
+            if (!m_dynamicHeistData.hasHeistRequirementsMet)
             {
                 UpdateHeistRequirementsStatus();
             }
@@ -98,13 +100,12 @@ namespace Collectives.HeistSystems
 
         private void UpdateHeistRequirementsStatus()
         {
-            bool hasCollectedRequiredAmount = m_dynamicHeistData.collectedValuables.Count >=
-                                              m_heistDataSO.moneyRequiredPerDifficulty[(int)m_heistDifficulty];
+            bool hasCollectedRequiredAmount = m_dynamicHeistData.collectedValuables.Count >= m_heistDataSO.mustHaveValuableIDs.Length;
             bool hasCollectedMustHaveValuables = HasCollectedMustHaveValuables();
 
             if (hasCollectedRequiredAmount && hasCollectedMustHaveValuables)
             {
-                m_dynamicHeistData.heistRequirementsMet = true;
+                m_dynamicHeistData.hasHeistRequirementsMet = true;
             }
         }
 

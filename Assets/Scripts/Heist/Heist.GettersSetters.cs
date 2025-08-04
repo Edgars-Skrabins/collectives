@@ -19,10 +19,5 @@ namespace Collectives.HeistSystems
         {
             return m_heistDifficulty;
         }
-
-        public EHeistTacticState GetCurrentTacticState()
-        {
-            return m_currentTacticState;
-        }
     }
 }
