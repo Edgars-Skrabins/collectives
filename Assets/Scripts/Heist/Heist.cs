@@ -17,13 +17,13 @@ namespace Collectives.HeistSystems
         public UnityEvent OnHeistComplete;
         public UnityEvent OnHeistFail;
 
+        [SerializeField] private HeistDataSO m_heistDataSO;
         [SerializeField] private HeistTimer m_heistTimerCS;
         [SerializeField] private float m_delayBeforeHeistFailSceneLoad;
         [SerializeField] private float m_delayBeforeHeistSucceedsSceneLoad;
         [SerializeField] private EGameScenes m_heistSuccessScene;
         [SerializeField] private EGameScenes m_heistFailScene;
 
-        private HeistDataSO m_heistDataSO;
         private EHeistDifficulty m_heistDifficulty;
 
         protected override void Awake()
