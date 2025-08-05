@@ -29,9 +29,9 @@ namespace Collectives.HeistSystems
             return m_elapsedTime;
         }
 
-        public float SetElapsedTime(float _elapsedTime)
+        public void SetElapsedTime(float _elapsedTime)
         {
-            return m_elapsedTime = _elapsedTime;
+            m_elapsedTime = _elapsedTime;
         }
 
         public EHeistTacticState GetCurrentTacticState()
