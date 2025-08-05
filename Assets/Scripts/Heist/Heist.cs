@@ -12,7 +12,7 @@ namespace Collectives.HeistSystems
 {
     public partial class Heist : Singleton<Heist>
     {
-        private readonly DynamicHeistData m_dynamicHeistData = new DynamicHeistData();
+        private DynamicHeistData m_dynamicHeistData;
         public event Action<IValuable, DropOffZoneData> OnValuableCollected;
         public UnityEvent OnHeistComplete;
         public UnityEvent OnHeistFail;
@@ -40,9 +40,9 @@ namespace Collectives.HeistSystems
 
         private void InitializeDynamicHeistDataProperties()
         {
-            m_dynamicHeistData.currentTacticState = GetStartingTacticState();
-            m_dynamicHeistData.requiredMoney = m_heistDataSO.moneyRequiredPerDifficulty
-                .First(obj => obj.difficulty == m_heistDifficulty).moneyRequired;
+            int requiredMoney = m_heistDataSO.moneyRequiredPerDifficulty.First(obj => obj.difficulty == m_heistDifficulty)
+                .moneyRequired;
+            m_dynamicHeistData = new DynamicHeistData(GetStartingTacticState(), requiredMoney, m_heistDataSO.mustHaveValuableIDs);
         }
 
         private EHeistTacticState GetStartingTacticState()
@@ -52,21 +52,13 @@ namespace Collectives.HeistSystems
 
         public void AddValuableToCollected(IValuable _valuable, DropOffZoneData _dropOffZoneData)
         {
-            m_dynamicHeistData.collectedValuables.Add(_valuable);
-            m_dynamicHeistData.acquiredMoney += _valuable.GetValuableData().monetaryValue;
-            m_dynamicHeistData.acquiredExperience += _valuable.GetValuableData().experienceValue;
-
+            m_dynamicHeistData.AddValuableToCollected(_valuable);
             OnValuableCollected?.Invoke(_valuable, _dropOffZoneData);
-
-            if (!m_dynamicHeistData.hasHeistRequirementsMet)
-            {
-                UpdateHeistRequirementsStatus();
-            }
         }
 
         private void SetCurrentTacticState(EHeistTacticState _newTacticState)
         {
-            m_dynamicHeistData.currentTacticState = _newTacticState;
+            m_dynamicHeistData.SetCurrentTacticState(_newTacticState);
             bool heistIsStealthOnly = m_heistDataSO.tacticRules == EHeistTacticRules.STEALTH_ONLY;
 
             if (_newTacticState == EHeistTacticState.LOUD && heistIsStealthOnly)
@@ -95,30 +87,7 @@ namespace Collectives.HeistSystems
 
         private void UpdateElapsedTime()
         {
-            m_dynamicHeistData.elapsedTime = HeistTimer.I.GetElapsedSeconds();
-        }
-
-        private void UpdateHeistRequirementsStatus()
-        {
-            // TODO: This has potential to be split into 2 public functions HasCollectedRequiredMoney and HasCollectedMustHaveValuables
-            // for more precise control. At the time of writing this was unecessary 
-            bool hasCollectedRequiredMoney = m_dynamicHeistData.collectedValuables.Count >= m_heistDataSO.mustHaveValuableIDs.Length;
-            if (hasCollectedRequiredMoney && HasCollectedMustHaveValuables())
-            {
-                m_dynamicHeistData.hasHeistRequirementsMet = true;
-            }
-        }
-
-        private bool HasCollectedMustHaveValuables()
-        {
-            if (m_heistDataSO.mustHaveValuableIDs.Length <= 0)
-            {
-                return true;
-            }
-
-            return m_heistDataSO.mustHaveValuableIDs.All(id =>
-                m_dynamicHeistData.collectedValuables.Any(valuable => valuable.GetID() == id)
-            );
+            m_dynamicHeistData.SetElapsedTime(HeistTimer.I.GetElapsedSeconds());
         }
     }
 }
