@@ -1,4 +1,6 @@
+using System.Collections.ObjectModel;
 using Collectives.GlobalConstants;
+using Collectives.ValuableSystems;
 
 namespace Collectives.HeistSystems
 {
@@ -32,6 +34,11 @@ namespace Collectives.HeistSystems
         public void SetElapsedTime(float _elapsedTime)
         {
             m_elapsedTime = _elapsedTime;
+        }
+
+        public ObservableCollection<IValuable> GetCollectedValuablesCopy()
+        {
+            return new ObservableCollection<IValuable>(m_collectedValuables);
         }
 
         public EHeistTacticState GetCurrentTacticState()

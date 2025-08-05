@@ -14,7 +14,6 @@ namespace Collectives.HeistSystems
         [SerializeField] private TextMeshProUGUI m_moneyEarned;
         [SerializeField] private TextMeshProUGUI m_earnedExperience;
 
-
         private void Awake()
         {
             InitializeUIElements();
@@ -27,10 +26,10 @@ namespace Collectives.HeistSystems
 
             m_heistName.text = staticHeistData.name;
             m_heistDescription.text = staticHeistData.description;
-            m_timeElapsed.text = dynamicHeistData.elapsedTime.ToTimeFormat();
-            m_stolenValuableAmount.text = dynamicHeistData.collectedValuables.Count.ToString();
-            m_moneyEarned.text = dynamicHeistData.acquiredMoney.ToString();
-            m_earnedExperience.text = dynamicHeistData.acquiredExperience.ToString();
+            m_timeElapsed.text = dynamicHeistData.GetElapsedTime().ToTimeFormat();
+            m_stolenValuableAmount.text = dynamicHeistData.GetCollectedValuablesCopy().Count.ToString();
+            m_moneyEarned.text = dynamicHeistData.GetAcquiredMoney().ToString();
+            m_earnedExperience.text = dynamicHeistData.GetAcquiredExperience().ToString();
         }
     }
 }
