@@ -36213,6 +36213,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heist
       objectReference: {fileID: 0}
+    - target: {fileID: 4525837963083028499, guid: d21e26d71a3bf3a4f9d8f0b756c94784, type: 3}
+      propertyPath: m_heistDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 893d522dcf9aac041ac471520fb69d17, type: 2}
     - target: {fileID: 5618915748981102593, guid: d21e26d71a3bf3a4f9d8f0b756c94784, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
