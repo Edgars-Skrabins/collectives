@@ -1,6 +1,7 @@
 using Collectives.ScriptableObjects;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Collectives.UI
 {
@@ -38,6 +39,11 @@ namespace Collectives.UI
             m_descriptionTextObj.SetActive(false);
             m_activeBorder.SetActive(false);
             m_inactiveBorder.SetActive(true);
+        }
+
+        public void OnPlayPress()
+        {
+            SceneManager.LoadScene(m_heistData.heistScene.ToString());
         }
     }
 }

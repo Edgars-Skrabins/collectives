@@ -17,6 +17,8 @@ MonoBehaviour:
     the illegal kind. \nBut people started talking, and listening too. There is talk
     of the harbor chief slippin back into his old ways and with that, there is potential
     to collect some valuable documents and hand them to our clients for a nice payday."
+  tacticRules: 0
+  heistScene: 3
   moneyRequiredPerDifficulty:
   - difficulty: 0
     moneyRequired: 0
@@ -26,5 +28,4 @@ MonoBehaviour:
     moneyRequired: 0
   - difficulty: 3
     moneyRequired: 0
-  tacticRules: 0
   mustHaveValuableIDs: 00000000

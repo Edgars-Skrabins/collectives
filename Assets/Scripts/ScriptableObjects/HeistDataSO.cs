@@ -16,8 +16,9 @@ namespace Collectives.ScriptableObjects
     {
         public string heistName;
         [TextArea] public string description;
-        public DifficultyMoneyRequirement[] moneyRequiredPerDifficulty;
         public EHeistTacticRules tacticRules;
+        public EGameScenes heistScene;
+        public DifficultyMoneyRequirement[] moneyRequiredPerDifficulty;
         public int[] mustHaveValuableIDs;
     }
 }
