@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b875865e000f34b8c92ce5c5232fa965, type: 3}
   m_Name: HeistData_Heist_01
   m_EditorClassIdentifier: 
-  heistName: 
-  description: 
+  heistName: Harbor
+  description: "Thi9s used to be a hot spot for local low level government activity,
+    the illegal kind. \nBut people started talking, and listening too. There is talk
+    of the harbor chief slippin back into his old ways and with that, there is potential
+    to collect some valuable documents and hand them to our clients for a nice payday."
   moneyRequiredPerDifficulty:
   - difficulty: 0
     moneyRequired: 0
@@ -24,4 +27,4 @@ MonoBehaviour:
   - difficulty: 3
     moneyRequired: 0
   tacticRules: 0
-  mustHaveValuableIDs: 000000000000000000000000
+  mustHaveValuableIDs: 00000000
