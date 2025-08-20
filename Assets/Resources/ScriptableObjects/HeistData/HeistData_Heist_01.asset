@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HeistData_Heist_01
   m_EditorClassIdentifier: 
   heistName: Harbor
-  description: "Thi9s used to be a hot spot for local low level government activity,
+  description: "This used to be a hot spot for local low level government activity,
     the illegal kind. \nBut people started talking, and listening too. There is talk
     of the harbor chief slippin back into his old ways and with that, there is potential
     to collect some valuable documents and hand them to our clients for a nice payday."
