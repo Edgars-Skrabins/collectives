@@ -16,7 +16,6 @@ namespace Collectives.HeistSystems
         private readonly ObservableCollection<IValuable> m_collectedValuables = new();
         private readonly int[] m_mustHaveValuableIDs;
         private EHeistTacticState m_currentTacticState;
-
         private bool m_hasHeistRequirementsMet;
         private bool m_hasCollectedMustHaveValuables;
 

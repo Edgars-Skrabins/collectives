@@ -12,7 +12,6 @@ namespace Collectives.HeistSystems
 {
     public partial class Heist : Singleton<Heist>
     {
-        private DynamicHeistData m_dynamicHeistData;
         public event Action<IValuable, DropOffZoneData> OnValuableCollected;
         public UnityEvent OnHeistComplete;
         public UnityEvent OnHeistFail;
@@ -25,6 +24,7 @@ namespace Collectives.HeistSystems
         [SerializeField] private EGameScenes m_heistFailScene;
 
         private EHeistDifficulty m_heistDifficulty;
+        private DynamicHeistData m_dynamicHeistData;
 
         protected override void Awake()
         {
