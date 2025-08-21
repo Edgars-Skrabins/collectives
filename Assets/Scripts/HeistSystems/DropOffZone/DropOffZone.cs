@@ -2,7 +2,7 @@ using Collectives.HelperComponents;
 using Collectives.ValuableSystems;
 using UnityEngine;
 
-namespace Collectives.DropOffZone
+namespace Collectives.HeistSystems.DropOffZone
 {
     public class DropOffZone : MonoBehaviour
     {

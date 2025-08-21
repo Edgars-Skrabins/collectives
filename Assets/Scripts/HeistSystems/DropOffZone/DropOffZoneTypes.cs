@@ -1,4 +1,4 @@
-namespace Collectives.DropOffZone
+namespace Collectives.HeistSystems.DropOffZone
 {
     public struct DropOffZoneData
     {
