@@ -134,6 +134,33 @@ MonoBehaviour:
   - {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
   - {r: 0.77254903, g: 0.73333335, b: 0.3019608, a: 1}
   m_randomizedMaterialIndexes: 00000000
+  m_designPresets:
+  - color: {r: 0.7058824, g: 0, b: 0, a: 1}
+    decalTexture: {fileID: 0}
+  - color: {r: 0.7058824, g: 0, b: 0, a: 1}
+    decalTexture: {fileID: 2800000, guid: b8da4ab9c81545747aa3b1b58a82e504, type: 3}
+  - color: {r: 0.6862745, g: 0, b: 0, a: 1}
+    decalTexture: {fileID: 2800000, guid: b8da4ab9c81545747aa3b1b58a82e504, type: 3}
+  - color: {r: 0.6862745, g: 0, b: 0, a: 1}
+    decalTexture: {fileID: 0}
+  - color: {r: 0.078431375, g: 0.29411766, b: 0, a: 1}
+    decalTexture: {fileID: 2800000, guid: b8da4ab9c81545747aa3b1b58a82e504, type: 3}
+  - color: {r: 0.078431375, g: 0.29411766, b: 0, a: 1}
+    decalTexture: {fileID: 0}
+  - color: {r: 0, g: 0.15686275, b: 0.23529412, a: 1}
+    decalTexture: {fileID: 2800000, guid: b8da4ab9c81545747aa3b1b58a82e504, type: 3}
+  - color: {r: 0, g: 0.13725491, b: 0.23529412, a: 1}
+    decalTexture: {fileID: 2800000, guid: b8da4ab9c81545747aa3b1b58a82e504, type: 3}
+  - color: {r: 0.15294118, g: 0.23921569, b: 0.3529412, a: 1}
+    decalTexture: {fileID: 0}
+  - color: {r: 0, g: 0.13725491, b: 0.23529412, a: 1}
+    decalTexture: {fileID: 0}
+  - color: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
+    decalTexture: {fileID: 0}
+  - color: {r: 0.77254903, g: 0.73333335, b: 0.3019608, a: 1}
+    decalTexture: {fileID: 0}
+  m_decalProjector: {fileID: 3143026505423534408}
+  m_decalMainTextureShaderPropertyName: 
 --- !u!1 &4877619868318532396
 GameObject:
   m_ObjectHideFlags: 0

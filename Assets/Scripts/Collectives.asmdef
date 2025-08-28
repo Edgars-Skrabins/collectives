@@ -3,7 +3,8 @@
     "rootNamespace": "Collectives",
     "references": [
         "GUID:d21d0f80ed5bf494cbc71a8bccc5e9f1",
-        "Collectives.GlobalConstants"
+        "GUID:af595d76ad5cc47dd9639b176f938286",
+        "GUID:457756d89b35d2941b3e7b37b4ece6f1"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
