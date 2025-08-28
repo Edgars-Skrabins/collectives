@@ -17,7 +17,7 @@ namespace Collectives
 
         [SerializeField] private Renderer m_renderer;
         [SerializeField] private DesignPreset[] m_designPresets;
-        [SerializeField] private DecalProjector m_decalProjector;
+        [SerializeField] private DecalProjector[] m_decalProjectors;
 
         private void OnEnable()
         {
@@ -27,23 +27,39 @@ namespace Collectives
         private void ApplyRandomDesign()
         {
             DesignPreset designPreset = m_designPresets[Random.Range(0, m_designPresets.Length)];
-            ApplyRandomColor(designPreset);
-            ApplyRandomDecal(designPreset);
+            ApplyColor(designPreset);
+            AttemptApplyDecals(designPreset);
         }
 
-        private void ApplyRandomColor(DesignPreset designPreset)
+        private void ApplyColor(DesignPreset designPreset)
         {
             m_renderer.materials[0].color = designPreset.color;
         }
 
-        private void ApplyRandomDecal(DesignPreset designPreset)
+        private void AttemptApplyDecals(DesignPreset designPreset)
         {
             if (designPreset.decalTexture == null)
             {
-                Destroy(m_decalProjector.gameObject);
-                return;
+                DestroyAllDecalProjectors();
             }
-            m_decalProjector.material.SetTexture(UnityShaderPropertyNames.MainTexture, designPreset.decalTexture);
+
+            ApplyDecals(designPreset);
+        }
+
+        private void DestroyAllDecalProjectors()
+        {
+            foreach (DecalProjector decalProjector in m_decalProjectors)
+            {
+                Destroy(decalProjector.gameObject);
+            }
+        }
+
+        private void ApplyDecals(DesignPreset designPreset)
+        {
+            foreach (DecalProjector decalProjector in m_decalProjectors)
+            {
+                decalProjector.material.SetTexture(UnityShaderPropertyNames.MainTexture, designPreset.decalTexture);
+            }
         }
     }
 }
