@@ -1,15 +1,24 @@
+using System;
 using Collectives.GlobalConstants;
 using UnityEngine;
 
 namespace Collectives.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "ValuableData", menuName = "Collectives/ValuableData", order = 0)]
+    [Serializable]
+    public class DifficultyMoneyRequirement
+    {
+        public EHeistDifficulty difficulty;
+        public int moneyRequired;
+    }
+
+    [CreateAssetMenu(fileName = "HeistData", menuName = "Collectives/HeistData", order = 0)]
     public class HeistDataSO : ScriptableObject
     {
         public string heistName;
-        public string description;
-        public int amountOfValuablesRequired;
+        [TextArea] public string description;
         public EHeistTacticRules tacticRules;
+        public EGameScenes heistScene;
+        public DifficultyMoneyRequirement[] moneyRequiredPerDifficulty;
         public int[] mustHaveValuableIDs;
     }
 }

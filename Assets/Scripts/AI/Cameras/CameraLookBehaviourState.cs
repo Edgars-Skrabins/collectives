@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ namespace Collectives.AICameraSystems
         public abstract IEnumerator Execute(LookAction action);
     }
 
-    [System.Serializable]
+    [Serializable]
     public class LookAction
     {
         public CameraLookBehaviourTypes actionType;
