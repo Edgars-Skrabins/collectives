@@ -43,6 +43,12 @@ namespace Collectives.ValuableSystems
             m_carryGFX.SetActive(true);
             m_carryGFXCollider.enabled = true;
         }
+        
+        protected virtual void Interact(Player _interactor)
+        {
+            base.Interact(_interactor);
+            _interactor.GetPlayerInventory().AddValuable(m_valuableData);
+        }
 
         public void Collect(DropOffZoneData _dropOffZoneData)
         {
