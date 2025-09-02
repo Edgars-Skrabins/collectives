@@ -4,6 +4,6 @@ namespace Collectives.GlobalConstants
     {
         STEALTH_ONLY,
         LOUD_ONLY,
-        STEALTH_OR_LOUD,
+        STEALTH_POSSIBLE
     }
 }

@@ -15,9 +15,10 @@ namespace Collectives.ScriptableObjects
     public class HeistDataSO : ScriptableObject
     {
         public string heistName;
-        public string description;
-        public DifficultyMoneyRequirement[] moneyRequiredPerDifficulty;
+        [TextArea] public string description;
         public EHeistTacticRules tacticRules;
+        public EGameScenes heistScene;
+        public DifficultyMoneyRequirement[] moneyRequiredPerDifficulty;
         public int[] mustHaveValuableIDs;
     }
 }
