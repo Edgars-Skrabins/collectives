@@ -37,11 +37,6 @@ namespace Collectives.ValuableSystems
         public override void AttemptInteract(Player _interactor)
         {
             base.AttemptInteract(_interactor);
-            _interactor.GetCarrySystem().SetCurrentValuable(this);
-            m_mainGFX.SetActive(false);
-            m_mainGFXCollider.enabled = false;
-            m_carryGFX.SetActive(true);
-            m_carryGFXCollider.enabled = true;
         }
         
         protected virtual void Interact(Player _interactor)
