@@ -10,9 +10,7 @@ namespace Collectives.PlayerSystems
         [SerializeField] private LayerMask m_interactableLayer;
 
         private Camera m_playerCamera;
-#nullable enable
         private Interactable? m_currentInteractable;
-#nullable disable
 
         private void Start()
         {
@@ -53,7 +51,7 @@ namespace Collectives.PlayerSystems
                 if (_hits[i].collider.TryGetComponent(out Interactable interactable) && interactable != m_currentInteractable)
                 {
                     m_currentInteractable = interactable;
-                    m_currentInteractable.HandleInteractInRange(m_player);
+                    m_currentInteractable?.HandleInteractInRange(m_player);
                 }
             }
         }
@@ -66,9 +64,9 @@ namespace Collectives.PlayerSystems
 
         private void HandleInteractionInput()
         {
-            if (m_currentInteractable != null && Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                m_currentInteractable.AttemptInteract(m_player);
+                m_currentInteractable?.AttemptInteract(m_player);
             }
         }
 

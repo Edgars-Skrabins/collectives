@@ -6,6 +6,7 @@ namespace Collectives.PlayerSystems
     public class Player : Character
     {
         [SerializeField] private PlayerCamera m_cameraSystem;
+        [SerializeField] private PlayerInventory m_inventory;
         [SerializeField] private CharacterController m_controller;
         [SerializeField] private PlayerMovement m_movementSystem;
         [SerializeField] private PlayerStamina m_staminaSystem;
@@ -16,8 +17,12 @@ namespace Collectives.PlayerSystems
 
         [Header("Events")]
         public UnityEvent OnStartSprint;
-
         public UnityEvent OnStopSprint;
+
+        public PlayerInventory GetPlayerInventory()
+        {
+            return m_inventory;
+        }
 
         public CharacterController GetCharacterController()
         {
