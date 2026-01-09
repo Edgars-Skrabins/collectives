@@ -26,7 +26,7 @@ namespace Collectives
 
             if (hasPlayersThatCanInteract)
             {
-                Interact();
+                Interact(_interactor);
                 return;
             }
 
@@ -53,7 +53,7 @@ namespace Collectives
             return id;
         }
 
-        protected virtual void Interact()
+        protected virtual void Interact(Player _interactor)
         {
             OnInteractSuccess?.Invoke();
         }
